@@ -4,3 +4,18 @@ Fix imagemin:
 ```sh
 $ npm cache clean && npm install gruntjs/grunt-contrib-imagemin
 ```
+
+
+Heroku Add-Ons
+```sh
+$ npm install pg --save
+$ cd dist
+$ heroku addons:create mongolab
+$ heroku addons:create heroku-postgresql:hobby-dev
+```
+
+Install Sequelize and MySQL
+```sh
+$ npm install sequelize --save
+$ npm install mysql --save 
+```

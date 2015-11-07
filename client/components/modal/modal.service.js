@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('zestAppApp')
+angular.module('zestApp')
   .factory('Modal', function ($rootScope, $modal) {
     /**
      * Opens a modal

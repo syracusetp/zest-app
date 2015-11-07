@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('zestAppApp')
+angular.module('zestApp')
   .controller('SettingsCtrl', function ($scope, User, Auth) {
     $scope.errors = {};
 

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('zestAppApp')
+angular.module('zestApp')
   .controller('LoginCtrl', function ($scope, Auth, $location, $window) {
     $scope.user = {};
     $scope.errors = {};

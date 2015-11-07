@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('zestAppApp')
+angular.module('zestApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('login', {

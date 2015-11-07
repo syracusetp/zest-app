@@ -3,7 +3,7 @@
 /**
  * Removes server error when user updates input
  */
-angular.module('zestAppApp')
+angular.module('zestApp')
   .directive('mongooseError', function () {
     return {
       restrict: 'A',
