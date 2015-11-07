@@ -2,26 +2,71 @@
 
 <header class="hero-unit" id="banner">
   <div class="container">
-    <h1>'Allo, 'Allo!</h1>
-    <p class="lead">Kick-starting your next web app with Angular Fullstack</p>
-    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
+    <div layout="row" layout-sm="column" layout-align="center center" class="lead-selectors">
+      <div>
+        <select class="form-control">
+          <option>Location</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+      <div hide-sm>
+        <select class="form-control">
+          <option>Service</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+      <div hide-sm>
+        <button type="button" class="btn btn-success" ui-sref="book">Book Now</button>
+      </div>
+      <div hide-gt-sm>
+        <div layout="row" layout-sm="row" layout-wrap flex layout-align="center center">
+          <div class="services">Home Cleaning</div>
+          <div class="services">Office Cleaning</div>
+          <div class="services">Fumigation</div>
+          <div class="services">Air Conditioning</div>
+        </div>
+      </div>
+    </div>
   </div>
 </header>
 
-<div layout="column" layout-align="center center">
-  <div>one</div>
-  <div>two</div>
-  <div>three</div>
+<div class="container">
+  <div class="why-zest">
+    <h2>Why Zest?</h2>
+    <div layout="row" layout-sm="column" layout-wrap layout-align="center center">
+      <div flex="50">
+        <img src="/assets/images/check.png" />
+        <h2>Trusted</h2>
+        <p>Experienced, friendly, background-checked, and insured.</p>
+      </div>
+      <div flex="50">
+        <img src="/assets/images/zest-professional.png" />
+        <h2>Professional</h2>
+        <p>Trained with the higest rated hotels and hospitalities in Nigeria.</p>
+      </div>
+      <div flex="50">
+        <img src="/assets/images/calendar-date.png" />
+        <h2>On-Time</h2>
+        <p>Find the time that works for you.</p>
+      </div>
+      <div flex="50">
+        <img src="/assets/images/calendar-time.png" />
+        <h2>Reliable</h2>
+        <p>Find the time that works for you.</p>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Features:</h1>
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in awesomeThings">
-        <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}</a></li>
-      </ul>
-    </div>
+  <div class="why-zest">
+    <h2>Our Happy Customers</h2>
   </div>
 </div>
 
