@@ -4,6 +4,7 @@ angular.module('zestApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
+  'ngMaterial',
   'ui.router',
   'ui.bootstrap'
 ])
