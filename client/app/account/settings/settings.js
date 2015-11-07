@@ -1,6 +1,15 @@
 'use strict';
 
-angular.module('zestApp')
+angular.module('zestApp.settings',['ui.router'])
+  .config(function ($stateProvider) {
+    $stateProvider
+      .state('settings', {
+        url: '/settings',
+        templateUrl: 'app/account/settings/settings.html',
+        controller: 'SettingsCtrl',
+        authenticate: true
+      });
+  })
   .controller('SettingsCtrl', function ($scope, User, Auth) {
     $scope.errors = {};
 

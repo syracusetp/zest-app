@@ -6,7 +6,12 @@ angular.module('zestApp', [
   'ngSanitize',
   'ngMaterial',
   'ui.router',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'zestApp.admin',
+  'zestApp.login',
+  'zestApp.settings',
+  'zestApp.signup',
+  'zestApp.main'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
