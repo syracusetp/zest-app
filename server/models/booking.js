@@ -41,10 +41,22 @@ module.exports = function(sequelize, DataTypes) {
                     onDelete: 'RESTRICT',
                     onUpdate: 'RESTRICT'
                 });
-                Booking.hasOne(models.Cleaning, {
+                Booking.hasOne(models.HomeCleaning, {
                     onDelete: 'RESTRICT',
                     onUpdate: 'RESTRICT'
                 });
+              Booking.hasOne(models.OfficeCleaning, {
+                onDelete: 'RESTRICT',
+                onUpdate: 'RESTRICT'
+              });
+              Booking.hasOne(models.AirConditioning, {
+                onDelete: 'RESTRICT',
+                onUpdate: 'RESTRICT'
+              });
+              Booking.hasOne(models.Fumigation, {
+                onDelete: 'RESTRICT',
+                onUpdate: 'RESTRICT'
+              });
             }
         }
     });
