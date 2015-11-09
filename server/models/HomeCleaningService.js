@@ -1,5 +1,5 @@
  module.exports = function(sequelize, DataTypes) {
-     var HomeCleaning = sequelize.define("HomeCleaning", {
+     var HomeCleaningService = sequelize.define("HomeCleaningService", {
          bedrooms: {
              type: DataTypes.DECIMAL(10, 2),
              validate: {
@@ -21,23 +21,23 @@
          paranoid: true,
          classMethods: {
              associate: function(models) {
-               HomeCleaning.belongsTo(models.Frequency, {
+               HomeCleaningService.belongsTo(models.Frequency, {
                     onDelete: 'RESTRICT',
                     onUpdate: 'RESTRICT'
                 });
-               HomeCleaning.belongsTo(models.Booking, {
+               HomeCleaningService.belongsTo(models.Booking, {
                     onDelete: 'RESTRICT',
                     onUpdate: 'RESTRICT'
                 });
-               HomeCleaning.hasMany(models.Extra, {
+               HomeCleaningService.hasMany(models.Extra, {
                     onDelete: 'CASCADE',
                     onUpdate: 'CASCADE'
                 });
-               HomeCleaning.hasMany(models.Pet, {
+               HomeCleaningService.hasMany(models.Pet, {
                     onDelete: 'CASCADE',
                     onUpdate: 'CASCADE'
                 });
-               HomeCleaning.hasOne(models.Zone, {
+               HomeCleaningService.hasOne(models.Zone, {
                  onDelete: 'CASCADE',
                  onUpdate: 'CASCADE'
                });
@@ -45,5 +45,5 @@
          }
      });
 
-     return Cleaning;
+     return HomeCleaningService;
  };

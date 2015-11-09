@@ -8,5 +8,7 @@ module.exports = {
     uri: 'mongodb://localhost/zestapp-dev'
   },
 
-  seedDB: true
+  seedDB: true,
+
+  force: true
 };

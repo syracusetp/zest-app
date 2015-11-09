@@ -10,6 +10,7 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 var express = require('express');
 var mongoose = require('mongoose');
 var config = require('./config/environment');
+var db = require('./models');
 
 // Connect to database
 mongoose.connect(config.mongo.uri, config.mongo.options);
@@ -19,7 +20,7 @@ mongoose.connection.on('error', function(err) {
 	}
 );
 // Populate DB with sample data
-if(config.seedDB) { require('./config/seed'); }
+if(config.seedDB) { require('./seed/mongo'); }
 
 // Setup server
 var app = express();
@@ -27,9 +28,14 @@ var server = require('http').createServer(app);
 require('./config/express')(app);
 require('./routes')(app);
 
-// Start server
-server.listen(config.port, config.ip, function () {
-  console.log('Express server listening on %d, in %s mode', config.port, app.get('env'));
+// Sync Sequelize and start server
+db.sequelize.sync({force: config.force}).then(function() {
+  if(config.seedDB){
+    require('./seed/sql')(db);
+  }
+  server.listen(config.port, config.ip, function() {
+    console.log('Express server listening on %d, in %s mode', config.port, app.get('env'));
+  });
 });
 
 // Expose app

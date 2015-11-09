@@ -10,10 +10,10 @@ module.exports = function(sequelize, DataTypes) {
         paranoid: true,
         classMethods: {
             associate: function(models) {
-                Extra.hasMany(models.Cleaning, {
+                /*Extra.hasMany(models.HomeCleaningService, {
                     onDelete: 'RESTRICT',
                     onUpdate: 'RESTRICT'
-                });
+                });*/
             }
         }
     });

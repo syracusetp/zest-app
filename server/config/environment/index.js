@@ -27,6 +27,9 @@ var all = {
   // Should we populate the DB with sample data?
   seedDB: false,
 
+  // Shouuld sequelize drop and create
+  force: true,
+
   // Secret for session, you will want to change this and make it an environment variable
   secrets: {
     session: 'zest-app-secret'

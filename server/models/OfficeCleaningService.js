@@ -1,5 +1,5 @@
  module.exports = function(sequelize, DataTypes) {
-     var OfficeCleaning = sequelize.define("OfficeCleaning", {
+     var OfficeCleaningService = sequelize.define("OfficeCleaningService", {
          rooms: {
              type: DataTypes.DECIMAL(10, 2),
              validate: {
@@ -21,23 +21,23 @@
          paranoid: true,
          classMethods: {
              associate: function(models) {
-               OfficeCleaning.belongsTo(models.Frequency, {
+               OfficeCleaningService.belongsTo(models.Frequency, {
                     onDelete: 'RESTRICT',
                     onUpdate: 'RESTRICT'
                 });
-               OfficeCleaning.belongsTo(models.Booking, {
+               OfficeCleaningService.belongsTo(models.Booking, {
                     onDelete: 'RESTRICT',
                     onUpdate: 'RESTRICT'
                 });
-               OfficeCleaning.hasMany(models.Extra, {
+               OfficeCleaningService.hasMany(models.Extra, {
                     onDelete: 'CASCADE',
                     onUpdate: 'CASCADE'
                 });
-               OfficeCleaning.hasMany(models.Pet, {
+               OfficeCleaningService.hasMany(models.Pet, {
                     onDelete: 'CASCADE',
                     onUpdate: 'CASCADE'
                 });
-               OfficeCleaning.hasOne(models.Zone, {
+               OfficeCleaningService.hasOne(models.Zone, {
                  onDelete: 'CASCADE',
                  onUpdate: 'CASCADE'
                });
@@ -45,5 +45,5 @@
          }
      });
 
-     return Cleaning;
+     return OfficeCleaningService;
  };

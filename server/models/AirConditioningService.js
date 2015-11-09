@@ -1,5 +1,5 @@
  module.exports = function(sequelize, DataTypes) {
-     var AirConditioning = sequelize.define("AirConditioning", {
+     var AirConditioningService = sequelize.define("AirConditioningService", {
          units: DataTypes.DECIMAL(10, 2),
          instructions: DataTypes.STRING,
          notes: DataTypes.TEXT
@@ -7,23 +7,23 @@
          paranoid: true,
          classMethods: {
              associate: function(models) {
-               AirConditioning.belongsTo(models.Frequency, {
+               AirConditioningService.belongsTo(models.Frequency, {
                     onDelete: 'RESTRICT',
                     onUpdate: 'RESTRICT'
                 });
-               AirConditioning.belongsTo(models.Booking, {
+               AirConditioningService.belongsTo(models.Booking, {
                     onDelete: 'RESTRICT',
                     onUpdate: 'RESTRICT'
                 });
-               AirConditioning.hasMany(models.Extra, {
+               AirConditioningService.hasMany(models.Extra, {
                     onDelete: 'CASCADE',
                     onUpdate: 'CASCADE'
                 });
-               AirConditioning.hasMany(models.Pet, {
+               AirConditioningService.hasMany(models.Pet, {
                     onDelete: 'CASCADE',
                     onUpdate: 'CASCADE'
                 });
-               AirConditioning.hasOne(models.Zone, {
+               AirConditioningService.hasOne(models.Zone, {
                  onDelete: 'CASCADE',
                  onUpdate: 'CASCADE'
                });
@@ -31,5 +31,5 @@
          }
      });
 
-     return Cleaning;
+     return AirConditioningService;
  };
