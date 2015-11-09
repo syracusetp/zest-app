@@ -10,7 +10,7 @@ angular.module('zestApp.main',['ui.router'])
       });
   })
   .controller('MainCtrl', function ($scope, $http) {
-    $scope.awesomeThings = [];
+    /*$scope.awesomeThings = [];
 
     $http.get('/api/things').success(function(awesomeThings) {
       $scope.awesomeThings = awesomeThings;
@@ -26,5 +26,5 @@ angular.module('zestApp.main',['ui.router'])
 
     $scope.deleteThing = function(thing) {
       $http.delete('/api/things/' + thing._id);
-    };
+    };*/
   });
