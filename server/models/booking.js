@@ -57,6 +57,26 @@ module.exports = function(sequelize, DataTypes) {
                 onDelete: 'RESTRICT',
                 onUpdate: 'RESTRICT'
               });
+              Booking.hasOne(models.ScheduledOnceBooking, {
+                onDelete: 'RESTRICT',
+                onUpdate: 'RESTRICT'
+              });
+              Booking.hasOne(models.ScheduledDailyBooking, {
+                onDelete: 'RESTRICT',
+                onUpdate: 'RESTRICT'
+              });
+              Booking.hasOne(models.ScheduledBiWeeklyBooking, {
+                onDelete: 'RESTRICT',
+                onUpdate: 'RESTRICT'
+              });
+              Booking.hasOne(models.ScheduledWeeklyBooking, {
+                onDelete: 'RESTRICT',
+                onUpdate: 'RESTRICT'
+              });
+              Booking.hasOne(models.ScheduledMonthlyBooking, {
+                onDelete: 'RESTRICT',
+                onUpdate: 'RESTRICT'
+              });
             }
         }
     });
