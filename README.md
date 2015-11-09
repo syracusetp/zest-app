@@ -5,6 +5,9 @@ Fix imagemin:
 $ npm cache clean && npm install gruntjs/grunt-contrib-imagemin
 ```
 
+MySQL Controls
+/usr/local/bin/mysql.server [start | stop | restart]
+
 
 Heroku Add-Ons
 ```sh
