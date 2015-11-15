@@ -21,26 +21,18 @@
          paranoid: true,
          classMethods: {
              associate: function(models) {
-               HomeCleaningService.belongsTo(models.Frequency, {
-                    onDelete: 'RESTRICT',
-                    onUpdate: 'RESTRICT'
-                });
                HomeCleaningService.belongsTo(models.Booking, {
                     onDelete: 'RESTRICT',
                     onUpdate: 'RESTRICT'
                 });
-               HomeCleaningService.hasMany(models.Extra, {
+               HomeCleaningService.hasMany(models.HomeCleaningExtra, {
                     onDelete: 'CASCADE',
                     onUpdate: 'CASCADE'
                 });
-               HomeCleaningService.hasMany(models.Pet, {
+               HomeCleaningService.hasMany(models.HomeCleaningPet, {
                     onDelete: 'CASCADE',
                     onUpdate: 'CASCADE'
                 });
-               HomeCleaningService.hasOne(models.Zone, {
-                 onDelete: 'CASCADE',
-                 onUpdate: 'CASCADE'
-               });
              }
          }
      });

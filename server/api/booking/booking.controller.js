@@ -133,27 +133,3 @@ exports.destroy = function(req, res) {
         })
     });
 };
-
-exports.types = function(req, res) {
-    db.BookingType.findAll().then(function(types) {
-        return res.json(200, types);
-    });
-};
-
-exports.frequencies = function(req, res) {
-    db.Frequency.findAll().then(function(frequencies) {
-        return res.json(200, frequencies);
-    });
-};
-
-exports.extras = function(req, res) {
-    db.Extra.findAll().then(function(extras) {
-        return res.json(200, extras);
-    });
-};
-
-exports.pets = function(req, res) {
-    db.Pet.findAll().then(function(pets) {
-        return res.json(200, pets);
-    });
-};

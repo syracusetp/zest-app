@@ -20,6 +20,7 @@ angular.module('zestApp.signup',['ui.router'])
         Auth.createUser({
           name: $scope.user.name,
           email: $scope.user.email,
+          mobilePhone: $scope.user.mobilePhone,
           password: $scope.user.password
         })
         .then( function() {

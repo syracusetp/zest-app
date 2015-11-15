@@ -1,14 +1,14 @@
  module.exports = function(sequelize, DataTypes) {
-     var FumigationService = sequelize.define("FumigationService", {
-         size: DataTypes.DECIMAL(10, 2),
-         others: DataTypes.DECIMAL(10, 2),
+     var AirConditionerService = sequelize.define("AirConditionerService", {
+         units: DataTypes.DECIMAL(10, 2),
+         type: DataTypes.STRING,
          instructions: DataTypes.STRING,
          notes: DataTypes.TEXT
      }, {
          paranoid: true,
          classMethods: {
              associate: function(models) {
-               FumigationService.belongsTo(models.Booking, {
+               AirConditionerService.belongsTo(models.Booking, {
                     onDelete: 'RESTRICT',
                     onUpdate: 'RESTRICT'
                 });
@@ -16,5 +16,5 @@
          }
      });
 
-     return FumigationService;
+     return AirConditionerService;
  };

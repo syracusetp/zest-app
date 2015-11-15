@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var BookingType = sequelize.define("BookingType", {
+    var ServiceType = sequelize.define("ServiceType", {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -8,15 +8,19 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
         },
+        active: {
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
         notes: DataTypes.TEXT
     }, {
         paranoid: true,
         classMethods: {
             associate: function(models) {
-                //BookingType.belongsTo(models.Customer);
+                //BookingServiceType.belongsTo(models.Customer);
             }
         }
     });
 
-    return BookingType;
+    return ServiceType;
 };

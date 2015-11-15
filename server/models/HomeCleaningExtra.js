@@ -1,16 +1,15 @@
 module.exports = function(sequelize, DataTypes) {
-    var Extra = sequelize.define("Extra", {
+    var HomeCleaningExtra = sequelize.define("HomeCleaningExtra", {
         name: DataTypes.STRING,
         description: DataTypes.STRING,
         icon: DataTypes.STRING,
-        variable: DataTypes.BOOLEAN,
         rate: DataTypes.DECIMAL(10, 2),
         notes: DataTypes.TEXT
     }, {
         paranoid: true,
         classMethods: {
             associate: function(models) {
-                /*Extra.hasMany(models.HomeCleaningService, {
+                /*HomeCleaningExtra.hasMany(models.HomeCleaningService, {
                     onDelete: 'RESTRICT',
                     onUpdate: 'RESTRICT'
                 });*/
@@ -18,5 +17,5 @@ module.exports = function(sequelize, DataTypes) {
         }
     });
 
-    return Extra;
+    return HomeCleaningExtra;
 };

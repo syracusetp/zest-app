@@ -21,7 +21,6 @@ module.exports = function(sequelize, DataTypes) {
         homePhone: DataTypes.BIGINT,
         address: DataTypes.TEXT,
         city: DataTypes.STRING,
-        neighborhood: DataTypes.STRING,
         state: DataTypes.STRING,
         postcode: DataTypes.STRING,
         referrer: DataTypes.STRING,
@@ -30,7 +29,7 @@ module.exports = function(sequelize, DataTypes) {
         paranoid: true,
         classMethods: {
             associate: function(models) {
-                Customer.hasMany(models.Booking)
+                Customer.hasMany(models.Booking);
             }
         }
     });

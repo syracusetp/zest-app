@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
-  var Frequency = sequelize.define("Zone", {
-    name: DataTypes.STRING,
+  var Zone = sequelize.define("Zone", {
+    category: DataTypes.STRING,
     neighborhood: DataTypes.STRING,
     rate: DataTypes.DECIMAL(10,2),
     notes: DataTypes.TEXT
@@ -8,10 +8,13 @@ module.exports = function(sequelize, DataTypes) {
     paranoid: true,
     classMethods: {
       associate: function(models) {
-        //Frequency.belongsTo(models.Customer);
+        Zone.hasMany(models.Customer, {
+          onDelete: 'RESTRICT',
+          onUpdate: 'RESTRICT'
+        });
       }
     }
   });
 
-  return Frequency;
+  return Zone;
 };

@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var Pet = sequelize.define("Pet", {
+    var HomeCleaningPet = sequelize.define("HomeCleaningPet", {
         dogs: DataTypes.BOOLEAN,
         cats: DataTypes.BOOLEAN,
         other: DataTypes.BOOLEAN,
@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
         paranoid: true,
         classMethods: {
             associate: function(models) {
-                Pet.belongsTo(models.HomeCleaningService, {
+              HomeCleaningPet.belongsTo(models.HomeCleaningService, {
                     onDelete: 'RESTRICT',
                     onUpdate: 'RESTRICT'
                 });
@@ -18,5 +18,5 @@ module.exports = function(sequelize, DataTypes) {
         }
     });
 
-    return Pet;
+    return HomeCleaningPet;
 };

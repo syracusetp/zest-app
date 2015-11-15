@@ -25,31 +25,35 @@ module.exports = function(sequelize, DataTypes) {
         paranoid: true,
         classMethods: {
             associate: function(models) {
-                Booking.belongsTo(models.Customer, {
-                    onDelete: 'RESTRICT',
-                    onUpdate: 'RESTRICT'
-                });
-                Booking.belongsTo(models.BookingType, {
-                    onDelete: 'RESTRICT',
-                    onUpdate: 'RESTRICT'
-                });
-                Booking.belongsTo(models.Checkout, {
-                    onDelete: 'RESTRICT',
-                    onUpdate: 'RESTRICT'
-                });
-                Booking.belongsTo(models.Employee, {
-                    onDelete: 'RESTRICT',
-                    onUpdate: 'RESTRICT'
-                });
-                Booking.hasOne(models.HomeCleaningService, {
-                    onDelete: 'RESTRICT',
-                    onUpdate: 'RESTRICT'
-                });
+              Booking.belongsTo(models.Customer, {
+                  onDelete: 'RESTRICT',
+                  onUpdate: 'RESTRICT'
+              });
+              Booking.belongsTo(models.ServiceType, {
+                  onDelete: 'RESTRICT',
+                  onUpdate: 'RESTRICT'
+              });
+              Booking.belongsTo(models.Frequency, {
+                onDelete: 'RESTRICT',
+                onUpdate: 'RESTRICT'
+              });
+              Booking.belongsTo(models.Checkout, {
+                  onDelete: 'RESTRICT',
+                  onUpdate: 'RESTRICT'
+              });
+              Booking.belongsTo(models.Employee, {
+                  onDelete: 'RESTRICT',
+                  onUpdate: 'RESTRICT'
+              });
+              Booking.hasOne(models.HomeCleaningService, {
+                  onDelete: 'RESTRICT',
+                  onUpdate: 'RESTRICT'
+              });
               Booking.hasOne(models.OfficeCleaningService, {
                 onDelete: 'RESTRICT',
                 onUpdate: 'RESTRICT'
               });
-              Booking.hasOne(models.AirConditioningService, {
+              Booking.hasOne(models.AirConditionerService, {
                 onDelete: 'RESTRICT',
                 onUpdate: 'RESTRICT'
               });

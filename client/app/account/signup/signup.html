@@ -37,6 +37,17 @@
           </p>
         </div>
 
+        <div class="form-group" ng-class="{ 'has-success': form.mobilePhone.$valid && submitted,
+                                            'has-error': form.mobilePhone.$invalid && submitted }">
+          <label>Mobile Phone</label>
+
+          <input type="text" name="mobilePhone" class="form-control" ng-model="user.mobilePhone"
+                 required/>
+          <p class="help-block" ng-show="form.mobilePhone.$error.required && submitted">
+            A phone number is required
+          </p>
+        </div>
+
         <div class="form-group" ng-class="{ 'has-success': form.password.$valid && submitted,
                                             'has-error': form.password.$invalid && submitted }">
           <label>Password</label>

@@ -1,12 +1,10 @@
 'use strict';
 
 var express = require('express');
-var controller = require('./booking.controller');
+var controller = require('./customer.controller');
 var auth = require('../../auth/auth.service');
 
 var router = express.Router();
-
-router.post('/register', controller.register);
 
 router.get('/', controller.index);
 router.post('/', controller.create);

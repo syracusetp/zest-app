@@ -33,17 +33,18 @@ exports.create = function (req, res, next) {
     var token = jwt.sign({
       _id: user._id
     }, config.secrets.session, {
-      expiresInMinutes: 60 * 5
+      expiresIn: 60 * 5
     });
     var names = user.name.split(' ');
     var firstName = names.shift();
     var customerObject = {
       uid: (''+user._id),
       email: user.email,
-      mobilePhone: user.phone,
+      mobilePhone: user.mobilePhone,
       firstName: firstName,
       lastName: names.join(' ')
     };
+    console.log('CUSTOMER===========>',customerObject);
     db.Customer.create(customerObject).then(function(customer) {
       res.json({
         token: token,
