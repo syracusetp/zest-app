@@ -22,3 +22,34 @@ Install Sequelize and MySQL
 $ npm install sequelize --save
 $ npm install mysql --save 
 ```
+
+
+To Do
+--------
+
+1) Book: Home Cleaning
+2) Schedule
+3) Pay: Cash
+4) Checkout
+5) Profile: View, Edit
+6) Bookings: View, Edit
+
+7) Pay: Online
+
+8) Book: Office Cleaning
+9) Schedule
+10) Pay
+11) Checkout
+12) Bookings: View, Edit
+
+13) Book: Fumigation
+14) Schedule
+15) Pay
+16) Checkout
+17) Bookings: View, Edit
+
+18) Book: Air Conditioner
+19) Schedule
+20) Pay
+21) Checkout
+22) Bookings: Air Conditioner
