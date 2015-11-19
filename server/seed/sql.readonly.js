@@ -52,6 +52,11 @@ module.exports = function(db) {
       description: 'Air Conditioner',
       active: true
     });
+    db.ServiceType.create({
+      name: 'constructionCleaning',
+      description: 'Construction Cleaning',
+      active: true
+    });
 
     // --------------  Frequencies
     db.Frequency.create({
