@@ -16,19 +16,19 @@
 }
 
 .hero-unit {
-    position: relative;
-    padding: 30px 15px;
-    color: #F5F5F5;
-    text-align: center;
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-    background: #4393B9;
-  height:450px;
+  position: relative;
+  padding: 30px 15px;
+  color: #F5F5F5;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  background: #bc893c;
+  height:100%;
 }
 
 .footer {
-    text-align: center;
-    padding: 30px 0;
-    border-top: 1px solid #E5E5E5;
+  text-align: center;
+  padding: 30px 0;
+  border-top: 1px solid #E5E5E5;
   background:black;
   color:white;
 }
@@ -50,8 +50,8 @@
   width:260px;
 }
 
-.lead-selectors .services{
-  min-width:120px;
+.lead-selectors .service{
+  width:120px;
   height: 150px;
   padding:10px;
   margin:10px;
@@ -61,7 +61,7 @@
   border-radius:4px;
 }
 
-.lead-selectors .services img{
+.lead-selectors .service img{
   width: 80px;
   margin-top:15px
 }
@@ -112,7 +112,7 @@
 }
 
 .share-us-container img{
-  max-width: 350px;
+  max-width: 300px;
   margin:20px;
   border: 1px solid #B8B8B8;
 }
@@ -120,7 +120,8 @@
 
 @media screen and (max-width: 768px){
   #banner {
-    background: url(../../assets/images/living-room-900x509.jpg) no-repeat;
+    background: url(../../assets/images/living-room-1280x853.jpg) no-repeat;
+    background-color: #bc893c;
   }
   .lead-selectors{
     margin-top:15px;
