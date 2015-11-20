@@ -62,8 +62,8 @@ module.exports = function(db) {
     });
     db.ServiceType.create({
       rank: 4,
-      name: 'construction-cleaning',
-      description: 'Construction Cleaning',
+      name: 'post-construction-cleaning',
+      description: 'Post Construction Cleaning',
       iconSrc: '/assets/images/noun_210477_cc.png',
       active: true
     });

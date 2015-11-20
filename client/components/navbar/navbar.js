@@ -2,10 +2,19 @@
 
 angular.module('zestApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
-    /*$scope.menu = [{
-      'title': 'Home',
-      'link': '/'
-    }];*/
+    $scope.menu = [{
+      title: 'Profile',
+      sref: 'profile'
+    },{
+      title: 'Bookings',
+      sref: 'bookings'
+    },{
+      title: 'Referrals',
+      sref: 'referrals'
+    },{
+      title: 'Contact Us',
+      sref: 'contact-us'
+    }];
 
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;

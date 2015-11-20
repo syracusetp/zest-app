@@ -61,6 +61,10 @@ module.exports = function(sequelize, DataTypes) {
                 onDelete: 'RESTRICT',
                 onUpdate: 'RESTRICT'
               });
+              Booking.hasOne(models.PostConstructionCleaningService, {
+                onDelete: 'RESTRICT',
+                onUpdate: 'RESTRICT'
+              });
               Booking.hasOne(models.ScheduledOnceBooking, {
                 onDelete: 'RESTRICT',
                 onUpdate: 'RESTRICT'

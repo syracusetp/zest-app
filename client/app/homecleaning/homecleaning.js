@@ -22,8 +22,15 @@ angular.module('App.homecleaning',['ui.router','angularNumberPicker'])
       vm.extrasLoading = false;
     });
 
-    vm.inner = $window.innerHeight;
+    fitFooter();
+    angular.element($window).bind('resize',function(){
+      console.log('done');
+      fitFooter();
+    });
 
-    $("#homecform").height(vm.inner-55);
+    function fitFooter(){
+      vm.inner = $window.innerHeight;
+      $("#homecform").height(vm.inner-55);
+    }
 
   });
