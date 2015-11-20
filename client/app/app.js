@@ -9,6 +9,7 @@ angular.module('zestApp', [
   'ui.bootstrap',
   'ng-wrap',
   'App.services.api.aux',
+  'App.contactus',
   'App.admin',
   'App.login',
   'App.settings',

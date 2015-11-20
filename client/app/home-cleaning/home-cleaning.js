@@ -5,7 +5,7 @@ angular.module('App.homecleaning',['ui.router','angularNumberPicker'])
     $stateProvider
       .state('home-cleaning', {
         url: '/home-cleaning/{bookingId}',
-        templateUrl: 'app/homecleaning/homecleaning.html',
+        templateUrl: 'app/home-cleaning/home-cleaning.html',
         controller: 'HomeCleaningCtrl',
         controllerAs: 'vm'
       });

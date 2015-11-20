@@ -91,27 +91,6 @@
   max-width: 400px;
 }
 
-.call-us-container,.email-us-container{
-  padding-bottom: 15px;
-}
-
-.call-us-container a, .email-us-container a{
-  text-decoration:none;
-}
-
-.find-us-container img{
-  width: 210px;
-  margin:25px;
-  border: 1px solid #B8B8B8;
-}
-
-.share-us-container img{
-  width: 210px;
-  margin:20px;
-  border: 1px solid #B8B8B8;
-}
-
-
 @media screen and (max-width: 768px){
   #banner {
     background: url(../../assets/images/living-room-1280x853.jpg) no-repeat;
