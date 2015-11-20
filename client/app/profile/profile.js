@@ -16,7 +16,7 @@ angular.module('App.profile',[
         controllerAs: 'vm'
       });
   })
-  .controller('ProfileCtrl', function (CustomerApiService, Auth, AuxApiService, $q, _, $scope, Customer, $timeout) {
+  .controller('ProfileCtrl', function (CustomerApiService, Auth, AuxApiService, $q, _, $scope, Customer, $mdDialog) {
     var vm = this;
 
     vm.loading = true;
