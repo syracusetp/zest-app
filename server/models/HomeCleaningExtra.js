@@ -9,10 +9,13 @@ module.exports = function(sequelize, DataTypes) {
         paranoid: true,
         classMethods: {
             associate: function(models) {
-                /*HomeCleaningExtra.hasMany(models.HomeCleaningService, {
-                    onDelete: 'RESTRICT',
-                    onUpdate: 'RESTRICT'
-                });*/
+              HomeCleaningExtra.belongsToMany(models.HomeCleaningService, {
+                through: {
+                  model: models.HomeCleaningServiceExtra
+                },
+                onDelete: 'RESTRICT',
+                onUpdate: 'RESTRICT'
+              });
             }
         }
     });

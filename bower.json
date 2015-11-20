@@ -14,7 +14,8 @@
     "lodash": "~3.10.1",
     "angular-ui-router": "~0.2.15",
     "angular-material": "~0.11.4",
-    "ng-wrap": "~0.3.1"
+    "ng-wrap": "~0.3.1",
+    "angular-number-picker": "~1.2.2"
   },
   "devDependencies": {
     "angular-mocks": "~1.4",

@@ -25,10 +25,13 @@
                     onDelete: 'RESTRICT',
                     onUpdate: 'RESTRICT'
                 });
-               HomeCleaningService.hasMany(models.HomeCleaningExtra, {
-                    onDelete: 'CASCADE',
-                    onUpdate: 'CASCADE'
-                });
+               HomeCleaningService.belongsToMany(models.HomeCleaningExtra, {
+                 through: {
+                   model: models.HomeCleaningServiceExtra
+                 },
+                 onDelete: 'CASCADE',
+                 onUpdate: 'CASCADE'
+               });
                HomeCleaningService.hasMany(models.HomeCleaningPet, {
                     onDelete: 'CASCADE',
                     onUpdate: 'CASCADE'

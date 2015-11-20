@@ -10,7 +10,7 @@ angular.module('App.main',['ui.router'])
         controllerAs: 'vm'
       });
   })
-  .controller('MainCtrl', function ($scope, $q, $state, _, AuxApiService) {
+  .controller('MainCtrl', function ($q, $state, _, AuxApiService) {
 
     var vm = this;
 
