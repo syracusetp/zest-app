@@ -1,8 +1,13 @@
 module.exports = function(sequelize, DataTypes) {
     var HomeCleaningExtra = sequelize.define("HomeCleaningExtra", {
+        active: {
+          type: DataTypes.BOOLEAN,
+          allowNull: false,
+          defaultValue: true
+        },
         name: DataTypes.STRING,
         description: DataTypes.STRING,
-        icon: DataTypes.STRING,
+        iconSrc: DataTypes.STRING,
         rate: DataTypes.DECIMAL(10, 2),
         notes: DataTypes.TEXT
     }, {

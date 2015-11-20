@@ -2,6 +2,11 @@ module.exports = function(sequelize, DataTypes) {
   var Zone = sequelize.define("Zone", {
     category: DataTypes.STRING,
     neighborhood: DataTypes.STRING,
+    active: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true
+    },
     rate: DataTypes.DECIMAL(10,2),
     notes: DataTypes.TEXT
   }, {

@@ -17,12 +17,12 @@ angular.module('App.main',['ui.router'])
     vm.loading = true;
 
     var fServices = AuxApiService.fetchServices().then(function(services){
-      vm.services = services;
+      vm.services = _.sortBy(_.filter(services, 'active'), 'rank');
       vm.service = vm.services[0];
     });
 
     var fZones = AuxApiService.fetchZones().then(function(zones){
-      vm.zones = _.sortBy(zones, 'neighborhood');
+      vm.zones = _.sortBy(_.filter(zones, 'active'), 'neighborhood');
       vm.zone = vm.zones[0];
     });
 
@@ -35,19 +35,4 @@ angular.module('App.main',['ui.router'])
       $state.go(service);
     };
 
-    /*$http.get('/api/aux/services').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
-    });*/
-
-    /*$scope.addThing = function() {
-      if($scope.newThing === '') {
-        return;
-      }
-      $http.post('/api/things', { name: $scope.newThing });
-      $scope.newThing = '';
-    };
-
-    $scope.deleteThing = function(thing) {
-      $http.delete('/api/things/' + thing._id);
-    };*/
   });

@@ -16,7 +16,13 @@ function LocalApiService($resource) {
     fetchZones: function(){
       var url = '/api/aux/zones';
       return $resource(url, {}).query().$promise;
+    },
+
+    fetchExtras: function() {
+      var url = '/api/aux/extras';
+      return $resource(url, {}).query().$promise;
     }
+
   };
 
   return api;

@@ -27,3 +27,9 @@ exports.zones = function(req, res) {
     return res.json(200, zones);
   });
 };
+
+exports.extras = function(req, res) {
+  db.HomeCleaningExtra.findAll().then(function(extras) {
+    return res.json(200, extras);
+  });
+};

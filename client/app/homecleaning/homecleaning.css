@@ -1,0 +1,62 @@
+.homecleaning-form-container{
+  border:1px solid green;
+}
+
+.homecleaning-form-container * {
+  xborder:1px solid black;
+}
+
+.homecleanig-form{
+  width:300px;
+  text-align: center;
+}
+
+.form-header{
+  font-size:25px;
+  font-weight: bold;
+}
+
+.form-item{
+  margin: 20px;
+}
+
+.full-width{
+  width:100%;
+}
+
+.extra-item {
+  xborder: 1px solid red;
+  width:90px;
+  xmargin:10px;
+  height:110px;
+  opacity:0.40;
+}
+
+.extra-item:hover{
+  cursor:pointer;
+}
+
+.extra-item img {
+  display: block;
+  height: 60px;
+  margin-left: auto;
+  margin-right: auto
+}
+
+.extra-item .fa-spinner {
+  line-height: 90px;
+}
+
+.extra-item.selected {
+  opacity: 1;
+}
+
+.sub-header{
+  font-weight: bold;
+  text-decoration: underline;
+  margin-bottom:15px;
+}
+
+.bottom-margin-sm{
+  margin-bottom: 10px;
+}

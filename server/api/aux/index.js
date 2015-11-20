@@ -10,5 +10,6 @@ router.get('/constants', controller.constants);
 router.get('/services', controller.services);
 router.get('/frequencies', controller.frequencies);
 router.get('/zones', controller.zones);
+router.get('/extras', controller.extras);
 
 module.exports = router;

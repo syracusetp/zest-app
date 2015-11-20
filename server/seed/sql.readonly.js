@@ -33,30 +33,35 @@ module.exports = function(db) {
 
     // --------------  Booking Service Types
     db.ServiceType.create({
-        name: 'home-cleaning',
-        description: 'Home Cleaning',
-        iconSrc: '/assets/images/noun_170055_cc.png',
-        active: true
+      rank: 0,
+      name: 'home-cleaning',
+      description: 'Home Cleaning',
+      iconSrc: '/assets/images/noun_170055_cc.png',
+      active: true
     });
     db.ServiceType.create({
+      rank: 1,
       name: 'office-cleaning',
       description: 'Office Cleaning',
       iconSrc: '/assets/images/noun_17159_cc.png',
       active: true
     });
     db.ServiceType.create({
+      rank: 2,
       name: 'fumigation',
       description: 'Fumigation',
       iconSrc: '/assets/images/fumigation-sm.png',
       active: true
     });
     db.ServiceType.create({
+      rank: 3,
       name: 'air-conditioner',
       description: 'Air Conditioner',
       iconSrc: '/assets/images/noun_36185_cc.png',
       active: true
     });
     db.ServiceType.create({
+      rank: 4,
       name: 'construction-cleaning',
       description: 'Construction Cleaning',
       iconSrc: '/assets/images/noun_210477_cc.png',
@@ -93,32 +98,32 @@ module.exports = function(db) {
     // --------------  Extras
     db.HomeCleaningExtra.create({
         name: 'fans',
-        icon: 'circle_fans.png',
+        iconSrc: '/assets/images/extras/circle_fans.png',
         rate: 300,
         variable: true,
         description: 'Fans'
     });
     db.HomeCleaningExtra.create({
         name: 'fridge',
-        icon: 'circle_fridge.png',
+        iconSrc: '/assets/images/extras/circle_fridge.png',
         rate: 450,
         description: 'Inside Fridge'
     });
     db.HomeCleaningExtra.create({
         name: 'oven',
-        icon: 'circle_oven.png',
+        iconSrc: '/assets/images/extras/circle_oven.png',
         rate: 1800,
         description: 'Inside Oven'
     });
     db.HomeCleaningExtra.create({
         name: 'cabinets',
-        icon: 'circle_cabinets.png',
+        iconSrc: '/assets/images/extras/circle_cabinets.png',
         rate: 450,
         description: 'Inside Cabinets'
     });
     db.HomeCleaningExtra.create({
         name: 'windows',
-        icon: 'circle_windows.png',
+        iconSrc: '/assets/images/extras/circle_windows.png',
         rate: 450,
         variable: true,
         description: 'Interior Windows'
