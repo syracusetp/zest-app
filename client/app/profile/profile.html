@@ -1,0 +1,133 @@
+<div layout="column" layout-align="center center">
+  <md-content flex class="standard-form">
+    <h3 class="header">Profile</h3>
+    <div ng-if="vm.loading"><span class="fa fa-spinner fa-spin"></span></div>
+    <form class="form" name="userForm" ng-if="!vm.loading" ng-submit="vm.save(userForm)" novalidate>
+      <div class="form-group" ng-class="{ 'has-error' : userForm.firstName.$invalid && userForm.firstName.$touched }">
+        <label>First Name</label>
+        <input
+          class="form-control"
+          type="text"
+          name="firstName"
+          ng-model="vm.customer.firstName"
+          ng-minlength="3"
+          ng-maxlength="88"
+          required>
+        <div ng-messages="userForm.firstName.$error">
+          <p ng-message="minlength">Your name is too short.</p>
+          <p ng-message="maxlength">Your name is too long.</p>
+          <p ng-message="required">Your name is required.</p>
+        </div>
+      </div>
+      <div class="form-group" ng-class="{ 'has-error' : userForm.lastName.$invalid && userForm.lastName.$touched }">
+        <label>Last Name</label>
+        <input
+          class="form-control"
+          type="text"
+          name="lastName"
+          ng-model="vm.customer.lastName"
+          ng-minlength="3"
+          ng-maxlength="88"
+          required>
+        <div ng-messages="userForm.lastName.$error">
+          <p ng-message="minlength">Your name is too short.</p>
+          <p ng-message="maxlength">Your name is too long.</p>
+          <p ng-message="required">Your name is required.</p>
+        </div>
+      </div>
+      <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && userForm.email.$touched }">
+        <label>Email</label>
+        <input
+          class="form-control"
+          type="text"
+          name="email"
+          ng-model="vm.customer.email"
+          ng-minlength="3"
+          required>
+        <div ng-messages="userForm.email.$error">
+          <p ng-message="minlength">Your email is too short.</p>
+          <p ng-message="required">Your email is required.</p>
+        </div>
+      </div>
+      <div class="form-group" ng-class="{ 'has-error' : userForm.mobilePhone.$invalid && userForm.mobilePhone.$touched }">
+        <label>Mobile Phone</label>
+        <input
+          class="form-control"
+          type="text"
+          name="mobilePhone"
+          ng-model="vm.customer.mobilePhone"
+          ng-minlength="3"
+          ui-br-phone-number
+          required>
+        <div ng-messages="userForm.mobilePhone.$error">
+          <p ng-message="minlength">Your phone is too short.</p>
+          <p ng-message="required">Your phone is required.</p>
+        </div>
+      </div>
+      <div class="form-group" ng-class="{ 'has-error' : userForm.company.$invalid && userForm.company.$touched }">
+        <label>Company</label>
+        <input
+          class="form-control"
+          type="text"
+          name="company"
+          ng-model="vm.customer.company"
+          ng-minlength="3">
+        <div ng-messages="userForm.company.$error">
+          <p ng-message="minlength">Your company name is too short.</p>
+          <p ng-message="required">Your company name is required.</p>
+        </div>
+      </div>
+      <div class="form-group" ng-class="{ 'has-error' : userForm.address.$invalid && userForm.address.$touched }">
+        <label>Address</label>
+        <input
+          class="form-control"
+          type="text"
+          name="address"
+          ng-model="vm.customer.address"
+          ng-minlength="3"
+          required>
+        <div ng-messages="userForm.address.$error">
+          <p ng-message="minlength">Your address is too short.</p>
+          <p ng-message="required">Your address is required.</p>
+        </div>
+      </div>
+      <div class="form-group" ng-class="{ 'has-error' : userForm.city.$invalid && userForm.city.$touched }">
+        <label>City</label>
+        <input
+          class="form-control"
+          type="text"
+          name="city"
+          ng-model="vm.customer.city"
+          ng-minlength="3"
+          required>
+        <div ng-messages="userForm.city.$error">
+          <p ng-message="minlength">Your address is too short.</p>
+          <p ng-message="required">Your address is required.</p>
+        </div>
+      </div>
+      <div class="form-group" ng-class="{ 'has-error' : userForm.neighborhood.$invalid && userForm.neighborhood.$touched }">
+        <label>Neighborhood</label>
+        <select class="form-control"
+                ng-model="vm.customer.ZoneId"
+                ng-options="z.id as z.neighborhood for z in vm.zones"></select>
+        <div ng-messages="userForm.neighborhood.$error">
+          <p ng-message="minlength">Your address is too short.</p>
+          <p ng-message="required">Your address is required.</p>
+        </div>
+      </div>
+      <div class="form-group">
+        <button type="button" class="btn btn-success submit" ng-if="vm.saving">
+          <span class="fa fa-spinner fa-spin"></span>
+        </button>
+        <button class="btn btn-success submit"
+                type="submit"
+                ng-disabled="userForm.$invalid"
+                ng-if="!vm.saving">Save</button>
+      </div>
+    </form>
+    <div ng-if="vm.done">
+      <p><span class="text-success glyphicon glyphicon-ok"></span> Saved.</p>
+    </div>
+  </md-content>
+</div>
+

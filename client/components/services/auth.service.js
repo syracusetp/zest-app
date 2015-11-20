@@ -47,6 +47,7 @@ angular.module('zestApp')
        */
       logout: function() {
         $cookieStore.remove('token');
+        $cookieStore.remove('CustomerId');
         currentUser = {};
       },
 

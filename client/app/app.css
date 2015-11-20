@@ -61,6 +61,10 @@
   margin-bottom: 10px;
 }
 
-.form-item button{
+.form-item button, .form-group button{
   width:100%;
+}
+
+.underline{
+  text-decoration: underline;
 }

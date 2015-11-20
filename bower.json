@@ -16,7 +16,8 @@
     "angular-material": "~0.11.4",
     "ng-wrap": "~0.3.1",
     "angular-number-picker": "~1.2.2",
-    "angular-input-masks": "~2.1.0"
+    "angular-input-masks": "~2.1.0",
+    "angular-messages": "ng-messages#*"
   },
   "devDependencies": {
     "angular-mocks": "~1.4",

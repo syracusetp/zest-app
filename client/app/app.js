@@ -11,6 +11,7 @@ angular.module('zestApp', [
   'App.services.api.aux',
   'App.contactus',
   'App.referrals',
+  'App.profile',
   'App.admin',
   'App.login',
   'App.settings',

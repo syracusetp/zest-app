@@ -31,7 +31,7 @@ exports.create = function(req, res) {
 };
 
 exports.update = function(req, res) {
-    db.Customer.find(req.body.id).then(function(customer) {
+    db.Customer.findById(req.body.id).then(function(customer) {
         customer.updateAttributes(req.body).then(function(customer) {
             return res.json(200, customer);
         }).error(function(error) {
@@ -41,7 +41,7 @@ exports.update = function(req, res) {
 };
 
 exports.destroy = function(req, res) {
-    db.Customer.find(req.body.id).then(function(customer) {
+    db.Customer.findById(req.body.id).then(function(customer) {
         customer.destroy(req.body).then(function(customer) {
             return res.json(200, customer);
         }).error(function(error) {
