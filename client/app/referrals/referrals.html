@@ -1,0 +1,32 @@
+<div layout="column" layout-align="center center">
+  <md-content flex class="standard-form">
+    <h4 class="header">Refer a Friend</h4>
+    <div class="form-item">
+      <input type="text" class="form-control" placeholder="First Name" ng-model="vm.referral.firstName" ng-disabled="vm.sending" />
+    </div>
+    <div class="form-item">
+      <input type="text" class="form-control" placeholder="Last Name" ng-model="vm.referral.lastName" ng-disabled="vm.sending" />
+    </div>
+    <div class="form-item">
+      <input type="text" class="form-control" placeholder="Email" ng-model="vm.referral.email" ng-disabled="vm.sending" />
+    </div>
+    <div class="form-item">
+      <input type="text" class="form-control" placeholder="Phone" ng-model="vm.referral.mobilePhone" ng-disabled="vm.sending" ui-br-phone-number/>
+    </div>
+    <div class="form-item">
+      <button type="button" class="btn btn-success submit" ng-if="vm.sending">
+        <span class="fa fa-spinner fa-spin"></span>
+      </button>
+      <button type="button" class="btn btn-success submit"
+              ng-click="vm.send()"
+              ng-disabled="!vm.referral"
+              ng-if="!vm.sending">Send</button>
+    </div>
+    <div ng-if="vm.done">
+      <h3>Thank You!</h3>
+        <p>Your referral has been sent.</p>
+        <h3><span class="text-success glyphicon glyphicon-ok"></span></h3>
+    </div>
+  </md-content>
+</div>
+

@@ -10,6 +10,7 @@ angular.module('zestApp', [
   'ng-wrap',
   'App.services.api.aux',
   'App.contactus',
+  'App.referrals',
   'App.admin',
   'App.login',
   'App.settings',

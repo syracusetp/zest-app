@@ -21,6 +21,7 @@ module.exports = function(config) {
       'client/bower_components/lodash/lodash.js',
       'client/bower_components/angular-ui-router/release/angular-ui-router.js',
       'client/bower_components/ng-wrap/ng-wrap.js',
+      'client/bower_components/angular-input-masks/angular-input-masks-standalone.min.js',
       'client/app/app.js',
       'client/app/**/*.js',
       'client/components/**/*.js',

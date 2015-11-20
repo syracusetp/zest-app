@@ -24,13 +24,12 @@ angular.module('App.homecleaning',['ui.router','angularNumberPicker'])
 
     fitFooter();
     angular.element($window).bind('resize',function(){
-      console.log('done');
       fitFooter();
     });
 
     function fitFooter(){
       vm.inner = $window.innerHeight;
-      $("#homecform").height(vm.inner-55);
+      $('#home-cleaning-form-container').height(vm.inner-55);
     }
 
   });

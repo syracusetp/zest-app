@@ -10,6 +10,6 @@ angular.module('App.contactus',['ui.router'])
         controllerAs: 'vm'
       });
   })
-  .controller('ContactUsCtrl', function ($q, $state, _, AuxApiService) {
+  .controller('ContactUsCtrl', function () {
 
   });

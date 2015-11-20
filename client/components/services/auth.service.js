@@ -26,6 +26,7 @@ angular.module('zestApp')
         }).
         success(function(data) {
           $cookieStore.put('token', data.token);
+          $cookieStore.put('CustomerId', data.CustomerId);
           currentUser = User.get();
           deferred.resolve(data);
           return cb();
@@ -62,6 +63,7 @@ angular.module('zestApp')
         return User.save(user,
           function(data) {
             $cookieStore.put('token', data.token);
+            $cookieStore.put('CustomerId', data.CustomerId);
             currentUser = User.get();
             return cb(user);
           },
@@ -141,6 +143,13 @@ angular.module('zestApp')
        */
       getToken: function() {
         return $cookieStore.get('token');
+      },
+
+      /**
+       * Get customer id
+       */
+      getCustomerId: function() {
+        return $cookieStore.get('CustomerId');
       }
     };
   });

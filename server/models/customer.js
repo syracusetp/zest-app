@@ -30,6 +30,7 @@ module.exports = function(sequelize, DataTypes) {
         classMethods: {
             associate: function(models) {
                 Customer.hasMany(models.Booking);
+                Customer.hasMany(models.Referral);
             }
         }
     });

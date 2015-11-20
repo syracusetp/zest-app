@@ -37,3 +37,30 @@
     color: #000;
     padding: 0.2em 0;
 }
+
+.standard-form{
+  width:320px;
+  text-align: center
+}
+
+.form-item{
+  margin: 20px;
+}
+
+.full-width{
+  width:100%;
+}
+
+.sub-header{
+  font-weight: bold;
+  text-decoration: underline;
+  margin-bottom:15px;
+}
+
+.bottom-margin-sm{
+  margin-bottom: 10px;
+}
+
+.form-item button{
+  width:100%;
+}
