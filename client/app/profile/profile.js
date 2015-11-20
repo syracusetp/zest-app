@@ -36,6 +36,14 @@ angular.module('App.profile',[
           vm.loading = false;
         });
 
+      }, function(resp){
+        vm.loading = false;
+        $mdDialog.show(
+          $mdDialog.alert()
+            .title('Error')
+            .content(resp.data)
+            .ok('Ok')
+        );
       });
 
     });
@@ -48,10 +56,14 @@ angular.module('App.profile',[
         vm.saving = false;
         vm.done = true;
 
-        $timeout(function(){
-          vm.done = false;
-        },2000);
-
+      }, function(resp){
+        vm.saving = false;
+        $mdDialog.show(
+          $mdDialog.alert()
+            .title('Error')
+            .content(resp.data)
+            .ok('Ok')
+        );
       });
 
     };

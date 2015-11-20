@@ -10,7 +10,7 @@ angular.module('App.referrals',['ui.router', 'App.services.api.referral','ui.uti
         controllerAs: 'vm'
       });
   })
-  .controller('ReferralsCtrl', function ($q, $state, _, ReferralApiService, Auth) {
+  .controller('ReferralsCtrl', function ($q, $state, _, ReferralApiService, Auth, $mdDialog) {
     var vm = this;
 
     vm.send = function(form){
@@ -18,6 +18,14 @@ angular.module('App.referrals',['ui.router', 'App.services.api.referral','ui.uti
       vm.referral.CustomerId = Auth.getCustomerId();
       ReferralApiService.send(vm.referral).then(function(){
         vm.sending = false;
+      }).catch(function(resp){
+        vm.sending = false;
+        $mdDialog.show(
+          $mdDialog.alert()
+            .title('Error')
+            .content(resp)
+            .ok('Ok')
+        );
       }).finally(function(){
         vm.referral = {};
         vm.referral.mobilePhone = '';

@@ -36,9 +36,19 @@ angular.module('App.rate',['ui.router', 'App.services.api.rating'])
 
     vm.comment = function(){
       vm.commenting = true;
-      vm.rating.$update({id : vm.rating.id},function(){
+      vm.rating.$update({id : vm.rating.id}, function(){
         vm.commenting = false;
+
         vm.done = true;
+      }, function(resp){
+        vm.commenting = false;
+
+        $mdDialog.show(
+          $mdDialog.alert()
+            .title('Error')
+            .content(resp.data.message)
+            .ok('Ok')
+        );
       });
     };
 
