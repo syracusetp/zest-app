@@ -33,28 +33,33 @@ module.exports = function(db) {
 
     // --------------  Booking Service Types
     db.ServiceType.create({
-        name: 'homeCleaning',
+        name: 'home-cleaning',
         description: 'Home Cleaning',
+        iconSrc: '/assets/images/noun_170055_cc.png',
         active: true
     });
     db.ServiceType.create({
-      name: 'officeCleaning',
+      name: 'office-cleaning',
       description: 'Office Cleaning',
+      iconSrc: '/assets/images/noun_17159_cc.png',
       active: true
     });
     db.ServiceType.create({
       name: 'fumigation',
       description: 'Fumigation',
+      iconSrc: '/assets/images/fumigation-sm.png',
       active: true
     });
     db.ServiceType.create({
-      name: 'airConditioner',
+      name: 'air-conditioner',
       description: 'Air Conditioner',
+      iconSrc: '/assets/images/noun_36185_cc.png',
       active: true
     });
     db.ServiceType.create({
-      name: 'constructionCleaning',
+      name: 'construction-cleaning',
       description: 'Construction Cleaning',
+      iconSrc: '/assets/images/noun_210477_cc.png',
       active: true
     });
 

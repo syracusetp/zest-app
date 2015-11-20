@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('zestApp.admin',['ui.router'])
+angular.module('App.admin',['ui.router'])
   .config(function ($stateProvider) {
     $stateProvider
       .state('admin', {

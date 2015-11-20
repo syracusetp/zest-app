@@ -7,11 +7,14 @@ angular.module('zestApp', [
   'ngMaterial',
   'ui.router',
   'ui.bootstrap',
-  'zestApp.admin',
-  'zestApp.login',
-  'zestApp.settings',
-  'zestApp.signup',
-  'zestApp.main'
+  'ng-wrap',
+  'App.services.api.aux',
+  'App.admin',
+  'App.login',
+  'App.settings',
+  'App.signup',
+  'App.main',
+  'App.homecleaning'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
@@ -47,7 +50,9 @@ angular.module('zestApp', [
     };
   })
 
-  .run(function ($rootScope, $location, Auth) {
+  .run(function ($rootScope, $location, Auth, ngWrap) {
+    ngWrap('_');
+
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function (event, next) {
       Auth.isLoggedInAsync(function(loggedIn) {

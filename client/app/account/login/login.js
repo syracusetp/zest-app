@@ -1,13 +1,13 @@
 'use strict';
 
-angular.module('zestApp.login',['ui.router'])
+angular.module('App.login',['ui.router'])
   .config(function ($stateProvider) {
     $stateProvider
       .state('login', {
         url: '/login',
         templateUrl: 'app/account/login/login.html',
         controller: 'LoginCtrl'
-      })
+      });
   })
   .controller('LoginCtrl', function ($scope, Auth, $location, $window) {
     $scope.user = {};

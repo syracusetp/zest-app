@@ -8,6 +8,10 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
         },
+        iconSrc: {
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
         active: {
           type: DataTypes.STRING,
           allowNull: false,

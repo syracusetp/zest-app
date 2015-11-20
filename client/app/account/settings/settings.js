@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('zestApp.settings',['ui.router'])
+angular.module('App.settings',['ui.router'])
   .config(function ($stateProvider) {
     $stateProvider
       .state('settings', {

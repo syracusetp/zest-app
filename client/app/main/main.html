@@ -1,50 +1,29 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
-
 <header class="hero-unit" id="banner">
   <div class="container">
-    <div layout="row" layout-sm="column" layout-align="center center" class="lead-selectors">
+    <div layout="row" layout-sm="column" layout-align="center center" class="lead-selectors" ng-if="vm.loading">
+      <span class="fa fa-spinner fa-spin"></span>
+    </div>
+    <div layout="row" layout-sm="column" layout-align="center center" class="lead-selectors" ng-if="!vm.loading">
       <div>
-        <select class="form-control">
-          <option>Location</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
+        <select class="form-control"
+                ng-model="vm.zone"
+                ng-options="z.neighborhood for z in vm.zones"></select>
       </div>
       <div hide-sm>
-        <select class="form-control">
-          <option>Service</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
+        <select class="form-control"
+                ng-model="vm.service"
+                ng-options="s.description for s in vm.services"></select>
       </div>
       <div hide-sm>
-        <button type="button" class="btn btn-success" ui-sref="book">Book Now</button>
+        <button type="button" class="btn btn-success" ng-click="vm.bookNow()">Book Now</button>
       </div>
       <div hide-gt-sm>
         <div layout="row" layout-sm="row" layout-wrap flex layout-align="center center">
-          <div class="service">
-            Home Cleaning<br>
-            <img src="/assets/images/noun_170055_cc.png" />
-          </div>
-          <div class="service">
-            Office Cleaning<br>
-            <img src="/assets/images/noun_17159_cc.png" />
-          </div>
-          <div class="service">
-            Fumigation<br>
-            <img src="/assets/images/fumigation.png" style="width:100px"/>
-          </div>
-          <div class="service">
-            Air Conditioner<br>
-            <img src="/assets/images/noun_36185_cc.png" />
-          </div>
-          <div class="service">
-            Construction Cleaning<br>
-            <img src="/assets/images/noun_210477_cc.png" />
+          <div class="service"
+               ng-repeat="service in vm.services"
+                ng-click="vm.bookNow(service.name)">
+            {{service.description}}<br>
+            <img ng-src="{{service.iconSrc}}" />
           </div>
         </div>
       </div>
@@ -142,6 +121,6 @@
 
 <footer class="footer">
   <div class="container">
-      <p>Copyright Zest Services | A fully licensed <a target="_blank" href="http://www.generationenterprise.org/">Generation Enterprise Company</a>.</p>
+    <p>Copyright Zest Services | A fully licensed <a target="_blank" href="http://www.generationenterprise.org/">Generation Enterprise Company</a>.</p>
   </div>
 </footer>

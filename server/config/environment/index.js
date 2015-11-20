@@ -25,7 +25,7 @@ var all = {
   ip: process.env.IP || '0.0.0.0',
 
   // Should we populate the DB with sample data?
-  seedDB: false,
+  seedDB: true,
 
   // Shouuld sequelize drop and create
   force: true,
