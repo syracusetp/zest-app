@@ -10,7 +10,7 @@ angular.module('App.referrals',['ui.router', 'App.services.api.referral','ui.uti
         controllerAs: 'vm'
       });
   })
-  .controller('ReferralsCtrl', function ($q, $state, _, ReferralApiService, Auth, $scope) {
+  .controller('ReferralsCtrl', function ($q, $state, _, ReferralApiService, Auth) {
     var vm = this;
 
     vm.send = function(form){

@@ -18,7 +18,7 @@ exports.register = function(req, res) {
         });
     }
     // Find customer
-    db.Customer.find(req.body.customer.id).then(function(customer) {
+    db.Customer.findById(req.body.customer.id).then(function(customer) {
         // Update customer
         delete req.body.customer.email;
         customer.updateAttributes(req.body.customer).then(function(customer) {
@@ -85,7 +85,7 @@ exports.create = function(req, res) {
 };
 
 exports.update = function(req, res) {
-    db.Booking.find(req.body.id).then(function(booking) {
+    db.Booking.findById(req.body.id).then(function(booking) {
         booking.updateAttributes(req.body).then(function(booking) {
             if (booking.confirmed) {
 
@@ -125,7 +125,7 @@ exports.update = function(req, res) {
 };
 
 exports.destroy = function(req, res) {
-    db.Booking.find(req.body.id).then(function(booking) {
+    db.Booking.findById(req.body.id).then(function(booking) {
         booking.destroy(req.body).then(function(booking) {
             return res.json(200, booking);
         }).error(function(error) {

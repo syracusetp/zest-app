@@ -12,6 +12,7 @@ angular.module('zestApp', [
   'App.contactus',
   'App.referrals',
   'App.profile',
+  'App.rate',
   'App.admin',
   'App.login',
   'App.settings',

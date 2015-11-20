@@ -8,10 +8,13 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         ServiceRating.belongsTo(models.Booking, {
+          constraints: false
         });
         ServiceRating.belongsTo(models.Customer, {
+          constraints: false
         });
         ServiceRating.belongsTo(models.Employee, {
+          constraints: false
         });
       }
     }

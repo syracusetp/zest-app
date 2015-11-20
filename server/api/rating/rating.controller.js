@@ -3,13 +3,13 @@
 var db = require('../../models');
 
 exports.index = function(req, res) {
-    db.Referral.findAll({}).then(function(referral) {
-        return res.json(200, referral);
+    db.ServiceRating.findAll({}).then(function(rating) {
+        return res.json(200, rating);
     });
 };
 
 exports.show = function(req, res) {
-    db.Referral.findOne({
+    db.ServiceRating.findOne({
       where: {
         id: req.params.id
       },
@@ -17,24 +17,24 @@ exports.show = function(req, res) {
         all: true,
         nested: true
       }]
-    }).then(function(referral) {
-        return res.json(200, referral);
+    }).then(function(rating) {
+        return res.json(200, rating);
     });
 };
 
 exports.create = function(req, res) {
-    db.Referral.create(req.body).then(function(referral) {
+    db.ServiceRating.create(req.body).then(function(rating) {
       // TODO: add sendgrid
-      return res.json(200, referral)
+      return res.json(200, rating)
     }).error(function(error) {
         return res.json(500, error);
     });
 };
 
 exports.update = function(req, res) {
-    db.Referral.findById(req.body.id).then(function(referral) {
-      referral.updateAttributes(req.body).then(function(referral) {
-            return res.json(200, referral);
+    db.ServiceRating.findById(req.body.id).then(function(rating) {
+      rating.updateAttributes(req.body).then(function(rating) {
+            return res.json(200, rating);
         }).error(function(error) {
             return res.json(500, error);
         })
@@ -42,9 +42,9 @@ exports.update = function(req, res) {
 };
 
 exports.destroy = function(req, res) {
-    db.Referral.findById(req.body.id).then(function(referral) {
-      referral.destroy(req.body).then(function(referral) {
-            return res.json(200, referral);
+    db.ServiceRating.findById(req.body.id).then(function(rating) {
+      rating.destroy(req.body).then(function(rating) {
+            return res.json(200, rating);
         }).error(function(error) {
             return res.json(500, error);
         })

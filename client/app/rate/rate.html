@@ -1,0 +1,29 @@
+<div layout="column" layout-align="center center">
+  <md-content flex class="standard-form">
+    <div ng-if="vm.loading">
+      <span class="fa fa-spinner fa-spin"></span>
+    </div>
+    <div ng-if="!vm.loading">
+      <h3>Thank You!</h3>
+        <p>Your rating has been saved.</p>
+        <h3><uib-rating ng-model="vm.rating.rating" max="5" readonly="vm.done"></uib-rating></h3>
+        <textarea class="form-control"
+                  ng-if="!vm.done"
+                  ng-disabled="vm.commenting"
+                  ng-model="vm.rating.comments"
+                  placeholder="How can we improve? What did you like the most? Any suggestion helps!"></textarea>
+        <br>
+        <h3 ng-if="vm.done"><span class="text-success glyphicon glyphicon-ok"></span></h3>
+        <div class="form-group">
+          <button type="button" class="btn btn-success submit" ng-if="vm.commenting">
+            <span class="fa fa-spinner fa-spin"></span>
+          </button>
+          <button type="button" class="btn btn-success submit"
+                  ng-click="vm.comment()"
+                  ng-disabled="!vm.rating.comments"
+                  ng-if="!vm.done">Comment</button>
+        </div>
+    </div>
+  </md-content>
+</div>
+

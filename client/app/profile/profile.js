@@ -27,7 +27,7 @@ angular.module('App.profile',[
 
       vm.customer = customer;
 
-      var fZones = AuxApiService.fetchZones().then(function(zones){
+      AuxApiService.fetchZones().then(function(zones){
 
         vm.zones = _.sortBy(_.filter(zones, 'active'), 'neighborhood');
         vm.customer.ZoneId = vm.customer.ZoneId || vm.zones[0].id;
@@ -40,7 +40,7 @@ angular.module('App.profile',[
 
     });
 
-    vm.save = function(form) {
+    vm.save = function() {
 
       vm.saving = true;
 
