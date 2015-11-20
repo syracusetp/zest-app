@@ -1,6 +1,6 @@
 <div layout="column" layout-align="center center">
   <md-content flex class="standard-form">
-    <h3 class="header">Profile</h3>
+    <h4 class="header">Profile</h4>
     <div ng-if="vm.loading"><span class="fa fa-spinner fa-spin"></span></div>
     <form class="form" name="userForm" ng-if="!vm.loading" ng-submit="vm.save(userForm)" novalidate>
       <div class="form-group" ng-class="{ 'has-error' : userForm.firstName.$invalid && userForm.firstName.$touched }">

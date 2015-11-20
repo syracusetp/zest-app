@@ -51,7 +51,7 @@ angular.module('App.profile',[
         $timeout(function(){
           vm.done = false;
         },2000);
-        
+
       });
 
     };
