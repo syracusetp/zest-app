@@ -44,7 +44,6 @@ exports.create = function (req, res, next) {
       firstName: firstName,
       lastName: names.join(' ')
     };
-    console.log('CUSTOMER===========>',customerObject);
     db.Customer.create(customerObject).then(function(customer) {
       res.json({
         token: token,
