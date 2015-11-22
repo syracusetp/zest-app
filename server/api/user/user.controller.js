@@ -46,11 +46,15 @@ exports.create = function (req, res, next) {
       ZoneId: req.body.ZoneId
     };
     db.Customer.create(customerObject).then(function(customer) {
-      res.json({
-        token: token,
-        CustomerId: customer.id,
-        ZoneId: customer.ZoneId,
-        hasBookings: false
+      newUser.CustomerId = customer.id;
+      newUser.save(function(err, user){
+        if(err) return res.json(err);
+        res.json({
+          token: token,
+          CustomerId: customer.id,
+          ZoneId: customer.ZoneId,
+          hasBookings: false
+        });
       });
     })
   });

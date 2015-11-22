@@ -8,50 +8,103 @@ angular.module('App.homecleaning',[
 ])
   .config(function ($stateProvider) {
     $stateProvider
-      .state('home-cleaning', {
-        url: '/home-cleaning/{homeCleaningServiceId}/{zoneId}',
-        templateUrl: 'app/home-cleaning/home-cleaning.html',
+      .state('homecleaning', {
+        url: '/homecleaning/{homeCleaningServiceId}/{zoneId}',
+        templateUrl: 'app/homecleaning/homecleaning.html',
         controller: 'HomeCleaningCtrl',
         controllerAs: 'vm'
       });
   })
-  .controller('HomeCleaningCtrl', function (AuxApiService, _, $window, $stateParams, HomeCleaning, $mdDialog) {
+  .controller('HomeCleaningCtrl', function ($q, Auth, AuxApiService, _, $window, $stateParams, HomeCleaning,
+                                            $mdDialog, CustomerApiService) {
     var vm = this;
 
-    if($stateParams.homeCleaningServiceId){
-      vm.loading = true;
-      HomeCleaning.get({id: $stateParams.homeCleaningServiceId}, function(service){
-        vm.loading = false;
-        vm.service = service;
+    init();
 
-      }, function(resp){
-        vm.loading = false;
-        $mdDialog.show(
-          $mdDialog.alert()
-            .title('Error')
-            .content(resp)
-            .ok('Ok')
-        );
-      });
-    }
+    vm.isValid = function(){
+      return true;
+    };
 
-    vm.bedrooms = 1;
-    vm.bathrooms = 1;
-
-    vm.extrasLoading = true;
-    AuxApiService.fetchExtras().then(function(extras){
-      vm.extras = _.filter(extras, 'active');
-      vm.extrasLoading = false;
-    });
+    vm.next = function(){
+      vm.service.extras = _.filter(vm.service.extras, 'selected');
+      console.log('service=',vm.service);
+    };
 
     fitFooter();
     angular.element($window).bind('resize',function(){
       fitFooter();
     });
 
+    function init(){
+
+      if($stateParams.homeCleaningServiceId){
+        vm.loading = true;
+
+        HomeCleaning.get({id: $stateParams.homeCleaningServiceId}, function(service){
+          vm.service = service;
+
+          fetchOthers();
+
+        }, function(resp){
+
+          $mdDialog.show(
+            $mdDialog.alert()
+              .title('Error')
+              .content(resp)
+              .ok('Ok')
+          );
+
+        });
+
+      }else {
+
+        vm.service = new HomeCleaning({
+          bedrooms: 1,
+          bathrooms: 1
+        });
+
+        fetchOthers();
+      }
+
+    }
+
+    function fetchOthers(){
+      var fCustomer = CustomerApiService.fetchCustomer(Auth.getCustomerId()).then(function(customer){
+        vm.service.address = customer.address;
+        vm.service.city = customer.city;
+        vm.service.state = customer.state;
+        vm.service.postcode = customer.postcode;
+        vm.service.ZoneId = customer.ZoneId;
+      });
+
+      var fZones = AuxApiService.fetchZones().then(function(zones){
+        vm.zones = zones;
+
+      });
+
+      var fExtras = AuxApiService.fetchExtras().then(function(extras){
+        vm.service.extras = extras;
+      });
+
+      $q.all([fCustomer, fZones, fExtras]).catch(function(resp){
+
+        $mdDialog.show(
+          $mdDialog.alert()
+            .title('Error')
+            .content(resp)
+            .ok('Ok')
+        );
+
+      }).finally(function(){
+        vm.loading = false;
+
+      });
+
+    }
+
     function fitFooter(){
       vm.inner = $window.innerHeight;
-      $('#home-cleaning-form-container').height(vm.inner-55);
+      $('#homecleaning-form-container').height(vm.inner-55);
     }
 
   });

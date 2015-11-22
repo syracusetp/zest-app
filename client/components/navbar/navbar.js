@@ -13,7 +13,7 @@ angular.module('zestApp')
       sref: 'referrals'
     },{
       title: 'Contact Us',
-      sref: 'contact-us'
+      sref: 'contactus'
     }];
 
     $scope.isCollapsed = true;

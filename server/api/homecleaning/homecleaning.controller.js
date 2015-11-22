@@ -19,7 +19,7 @@ exports.show = function(req, res) {
             all: true,
             nested: true
         }]
-    }).then(function(booking) {
+    }).then(function(service) {
         return res.json(200, service);
     });
 };

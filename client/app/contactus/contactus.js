@@ -3,9 +3,9 @@
 angular.module('App.contactus',['ui.router'])
   .config(function ($stateProvider) {
     $stateProvider
-      .state('contact-us', {
-        url: '/contact-us',
-        templateUrl: 'app/contact-us/contact-us.html',
+      .state('contactus', {
+        url: '/contactus',
+        templateUrl: 'app/contactus/contactus.html',
         controller: 'ContactUsCtrl',
         controllerAs: 'vm'
       });

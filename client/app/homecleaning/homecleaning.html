@@ -1,11 +1,11 @@
-<div layout="column" layout-align="center center" id="home-cleaning-form-container">
+<div layout="column" layout-align="center center" id="homecleaning-form-container">
   <md-content flex class="standard-form">
     <h4 class="header">Home Cleaning</h4>
     <div class="form-item">
-      <h-number value="vm.bedrooms" min="1" max="10" step="1" singular="bedroom" plural="bedrooms"></h-number>
+      <h-number value="vm.service.bedrooms" min="1" max="10" step="1" singular="bedroom" plural="bedrooms"></h-number>
     </div>
     <div class="form-item">
-      <h-number value="vm.bathrooms" min="1" max="10" step="1" singular="bathroom" plural="bathrooms"></h-number>
+      <h-number value="vm.service.bathrooms" min="1" max="10" step="1" singular="bathroom" plural="bathrooms"></h-number>
     </div>
     <div class="form-item">
       <div class="sub-header">Cleaning Extras</div>
@@ -13,7 +13,7 @@
         <div class="extra-item" ng-if="extras.loading === true">
           <span class="fa fa-spinner fa-spin"></span>
         </div>
-        <div ng-if="vm.extrasLoading !== true" ng-repeat="item in vm.extras" ng-click='item.selected = !item.selected'>
+        <div ng-if="vm.extrasLoading !== true" ng-repeat="item in vm.service.extras" ng-click='item.selected = !item.selected'>
           <div class="extra-item {{item.selected===true ? 'selected':''}}">
             <img ng-src="{{item.iconSrc}}"> {{item.description}}
           </div>
@@ -26,13 +26,13 @@
     <div class="form-item">
       <div class="bottom-margin-sm">Do you have any pets?</div>
       <div class="btn-group full-width bottom-margin-sm">
-        <label class="btn btn-primary" ng-model="cleaning.pets.cats" btn-checkbox style="width:34%">Cats</label>
-        <label class="btn btn-primary" ng-model="cleaning.pets.dogs" btn-checkbox style="width:34%">Dogs</label>
-        <label class="btn btn-primary" ng-model="cleaning.pets.other" btn-checkbox style="width:32%">Other</label>
+        <label class="btn btn-primary" ng-model="vm.service.pets.cats" btn-checkbox style="width:34%">Cats</label>
+        <label class="btn btn-primary" ng-model="vm.service.pets.dogs" btn-checkbox style="width:34%">Dogs</label>
+        <label class="btn btn-primary" ng-model="vm.service.pets.other" btn-checkbox style="width:32%">Other</label>
       </div>
-      <input ng-if="cleaning.pets.cats || cleaning.pets.dogs || cleaning.pets.other"
+      <input ng-if="vm.service.pets.cats || vm.service.pets.dogs || vm.service.pets.other"
              type="text" class="form-control pets-describe"
-             ng-model="cleaning.pets.description"
+             ng-model="vm.service.pets.description"
              placeholder="Describe eg. Black cat, white cat">
     </div>
   </md-content>
@@ -40,8 +40,16 @@
     <div class="md-toolbar-tools">
       <div layout="column" layout-align="center center"  style="width:100%;text-align: center">
         <div style="width:300px">
-          Total: ${{vm.inner}}<br>
-          <button type="button" class="btn btn-success submit">Next</button>
+          <div class="form-group">
+            <button type="button" class="btn btn-success submit" ng-if="vm.continuing">
+              <span class="fa fa-spinner fa-spin"></span>
+            </button>
+            <button class="btn btn-success submit"
+                    type="submit"
+                    ng-disabled="!vm.isValid()"
+                    ng-click="vm.next()"
+                    ng-if="!vm.saving">Next</button>
+          </div>
         </div>
       </div>
     </div>

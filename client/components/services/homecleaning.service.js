@@ -15,7 +15,7 @@ angular.module('App.services.api.homecleaning', [
 function HomeCleaningApiService($resource) {
 
   var api = {
-    fetchHomeCleaning: function(bookingId) {
+    fetchHomeCleaning: function(homeCleaningId) {
       var url = '/api/homecleanings/:homeCleaningId';
       return $resource(url, {homeCleaningId: homeCleaningId}).get().$promise;
     }
