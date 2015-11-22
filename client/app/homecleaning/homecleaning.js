@@ -36,36 +36,26 @@ angular.module('App.homecleaning',[
     });
 
     function init(){
-
       if($stateParams.homeCleaningServiceId){
         vm.loading = true;
-
         HomeCleaning.get({id: $stateParams.homeCleaningServiceId}, function(service){
           vm.service = service;
-
           fetchOthers();
-
         }, function(resp){
-
           $mdDialog.show(
             $mdDialog.alert()
               .title('Error')
               .content(resp)
               .ok('Ok')
           );
-
         });
-
       }else {
-
         vm.service = new HomeCleaning({
           bedrooms: 1,
           bathrooms: 1
         });
-
         fetchOthers();
       }
-
     }
 
     function fetchOthers(){
@@ -78,26 +68,28 @@ angular.module('App.homecleaning',[
       });
 
       var fZones = AuxApiService.fetchZones().then(function(zones){
-        vm.zones = zones;
-
+        vm.zones = _.sortBy(_.filter(zones, 'active'), 'neighborhood');
       });
 
       var fExtras = AuxApiService.fetchExtras().then(function(extras){
-        vm.service.extras = extras;
+        // TODO: set selected here
+        vm.service.extras = _.sortBy(_.filter(extras, 'active'), 'rank');
       });
 
-      $q.all([fCustomer, fZones, fExtras]).catch(function(resp){
+      var fFrequencies = AuxApiService.fetchFrequencies().then(function(frequencies){
+        // TODO: set selected here
+        vm.frequencies = _.sortBy(_.filter(frequencies, 'active'), 'rank');
+      });
 
+      $q.all([fCustomer, fZones, fExtras, fFrequencies]).catch(function(resp){
         $mdDialog.show(
           $mdDialog.alert()
             .title('Error')
             .content(resp)
             .ok('Ok')
         );
-
       }).finally(function(){
         vm.loading = false;
-
       });
 
     }

@@ -101,8 +101,8 @@
           ng-minlength="3"
           required>
         <div ng-messages="userForm.city.$error">
-          <p ng-message="minlength">Your address is too short.</p>
-          <p ng-message="required">Your address is required.</p>
+          <p ng-message="minlength">Your city is too short.</p>
+          <p ng-message="required">Your city is required.</p>
         </div>
       </div>
       <div class="form-group" ng-class="{ 'has-error' : userForm.neighborhood.$invalid && userForm.neighborhood.$touched }">
@@ -110,10 +110,6 @@
         <select class="form-control"
                 ng-model="vm.customer.ZoneId"
                 ng-options="z.id as z.neighborhood for z in vm.zones"></select>
-        <div ng-messages="userForm.neighborhood.$error">
-          <p ng-message="minlength">Your address is too short.</p>
-          <p ng-message="required">Your address is required.</p>
-        </div>
       </div>
       <div class="form-group">
         <button type="button" class="btn btn-success submit" ng-if="vm.saving">

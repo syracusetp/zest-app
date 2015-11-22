@@ -8,16 +8,14 @@ angular.module('App.signup',['ui.router'])
         templateUrl: 'app/account/signup/signup.html',
         controller: 'SignupCtrl',
         resolve:{
-          zones: function(AuxApiService, _){
-            return AuxApiService.fetchZones().then(function(zones){
-              return _.sortBy(_.filter(zones, 'active'), 'neighborhood');
-            });
+          zones: function(AuxApiService){
+            return AuxApiService.fetchZones();
           }
         }
       });
   })
-  .controller('SignupCtrl', function ($scope, Auth, $location, $window, zones, $localStorage, $state) {
-    $scope.zones = zones;
+  .controller('SignupCtrl', function ($scope, Auth, $location, $window, zones, $localStorage, $state, _) {
+    $scope.zones = _.sortBy(_.filter(zones, 'active'), 'neighborhood');
     $scope.user = {
       ZoneId: $localStorage.ZoneId || $scope.zones[0].id
     };

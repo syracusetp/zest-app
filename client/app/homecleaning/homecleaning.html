@@ -1,58 +1,106 @@
-<div layout="column" layout-align="center center" id="homecleaning-form-container">
-  <md-content flex class="standard-form">
-    <h4 class="header">Home Cleaning</h4>
-    <div class="form-item">
-      <h-number value="vm.service.bedrooms" min="1" max="10" step="1" singular="bedroom" plural="bedrooms"></h-number>
-    </div>
-    <div class="form-item">
-      <h-number value="vm.service.bathrooms" min="1" max="10" step="1" singular="bathroom" plural="bathrooms"></h-number>
-    </div>
-    <div class="form-item">
-      <div class="sub-header">Cleaning Extras</div>
-      <div layout="row" layout-sm="row" layout-wrap flex class="extras" layout-align="center center">
-        <div class="extra-item" ng-if="extras.loading === true">
-          <span class="fa fa-spinner fa-spin"></span>
-        </div>
-        <div ng-if="vm.extrasLoading !== true" ng-repeat="item in vm.service.extras" ng-click='item.selected = !item.selected'>
-          <div class="extra-item {{item.selected===true ? 'selected':''}}">
-            <img ng-src="{{item.iconSrc}}"> {{item.description}}
+<form name="form" novalidate>
+  <div layout="column" layout-align="center center" id="homecleaning-form-container">
+    <md-content flex class="standard-form" ng-if="vm.loading">
+      <span class="fa fa-spinner fa-spin"></span>
+    </md-content>
+    <md-content flex class="standard-form" ng-if="!vm.loading">
+      <h4 class="header">Home Cleaning</h4>
+      <div class="form-item">
+        <h-number value="vm.service.bedrooms" min="1" max="10" step="1" singular="bedroom" plural="bedrooms"></h-number>
+      </div>
+      <div class="form-item">
+        <h-number value="vm.service.bathrooms" min="1" max="10" step="1" singular="bathroom" plural="bathrooms"></h-number>
+      </div>
+      <div class="form-item">
+        <div class="sub-header">Cleaning Extras</div>
+        <div layout="row" layout-sm="row" layout-wrap flex class="extras" layout-align="center center">
+          <div ng-repeat="item in vm.service.extras" ng-click='item.selected = !item.selected'>
+            <div class="extra-item {{item.selected===true ? 'selected':''}}">
+              <img ng-src="{{item.iconSrc}}"> {{item.description}}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="form-item">
-      Cleaning will take approximately <b>{{hours()}}</b>.
-    </div>
-    <div class="form-item">
-      <div class="bottom-margin-sm">Do you have any pets?</div>
-      <div class="btn-group full-width bottom-margin-sm">
-        <label class="btn btn-primary" ng-model="vm.service.pets.cats" btn-checkbox style="width:34%">Cats</label>
-        <label class="btn btn-primary" ng-model="vm.service.pets.dogs" btn-checkbox style="width:34%">Dogs</label>
-        <label class="btn btn-primary" ng-model="vm.service.pets.other" btn-checkbox style="width:32%">Other</label>
+      <div class="form-item">
+        Cleaning will take approximately <b>{{hours()}}</b>.
       </div>
-      <input ng-if="vm.service.pets.cats || vm.service.pets.dogs || vm.service.pets.other"
-             type="text" class="form-control pets-describe"
-             ng-model="vm.service.pets.description"
-             placeholder="Describe eg. Black cat, white cat">
-    </div>
-  </md-content>
-  <md-toolbar style="height:100px">
-    <div class="md-toolbar-tools">
-      <div layout="column" layout-align="center center"  style="width:100%;text-align: center">
-        <div style="width:300px">
-          <div class="form-group">
-            <button type="button" class="btn btn-success submit" ng-if="vm.continuing">
-              <span class="fa fa-spinner fa-spin"></span>
-            </button>
-            <button class="btn btn-success submit"
-                    type="submit"
-                    ng-disabled="!vm.isValid()"
-                    ng-click="vm.next()"
-                    ng-if="!vm.saving">Next</button>
+      <div class="form-item">
+        <div class="bottom-margin-sm">Do you have any pets?</div>
+        <div class="btn-group full-width bottom-margin-sm">
+          <label class="btn btn-default" ng-model="vm.service.pets.cats" btn-checkbox style="width:34%">Cats</label>
+          <label class="btn btn-default" ng-model="vm.service.pets.dogs" btn-checkbox style="width:34%">Dogs</label>
+          <label class="btn btn-default" ng-model="vm.service.pets.other" btn-checkbox style="width:32%">Other</label>
+        </div>
+        <input ng-if="vm.service.pets.cats || vm.service.pets.dogs || vm.service.pets.other"
+               type="text" class="form-control pets-describe"
+               ng-model="vm.service.pets.description"
+               placeholder="Describe eg. Black cat, white cat">
+      </div>
+      <div class="form-item">
+        <div class="bottom-margin-sm"><b>How often?</b></div>
+        <md-radio-group ng-model="vm.frequency" class="frequency">
+          <md-radio-button ng-repeat="freq in vm.frequencies"
+                           value="{{freq.name}}"
+                           class="md-primary">{{freq.description}} (₦{{freq.rate}}/hr)</md-radio-button>
+        </md-radio-group>
+      </div>
+      <div class="form-item">
+        <div class="bottom-margin-sm"><b>Where?</b></div>
+        <div class="form-group" ng-class="{ 'has-error' : form.address.$invalid && form.address.$touched }">
+          <label>Address</label>
+          <input
+            class="form-control"
+            type="text"
+            name="address"
+            ng-model="vm.service.address"
+            ng-minlength="3"
+            required>
+          <div ng-messages="form.address.$error">
+            <p ng-message="minlength">Your address is too short.</p>
+            <p ng-message="required">Your address is required.</p>
+          </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : form.city.$invalid && form.city.$touched }">
+          <label>City</label>
+          <input
+            class="form-control"
+            type="text"
+            name="city"
+            ng-model="vm.service.city"
+            ng-minlength="3"
+            required>
+          <div ng-messages="form.city.$error">
+            <p ng-message="minlength">Your city is too short.</p>
+            <p ng-message="required">Your city is required.</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Neighborhood</label>
+
+          <select class="form-control"
+                  ng-model="vm.service.ZoneId"
+                  ng-options="z.id as z.neighborhood for z in vm.zones"></select>
+        </div>
+      </div>
+    </md-content>
+    <md-toolbar style="height:100px">
+      <div class="md-toolbar-tools">
+        <div layout="column" layout-align="center center"  style="width:100%;text-align: center">
+          <div style="width:300px">
+            <div class="form-group">
+              <button type="button" class="btn btn-success submit" ng-if="vm.continuing">
+                <span class="fa fa-spinner fa-spin"></span>
+              </button>
+              <button class="btn btn-success submit"
+                      type="submit"
+                      ng-disabled="form.$invalid"
+                      ng-click="vm.next()"
+                      ng-if="!vm.continuing">Next</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </md-toolbar>
-</div>
+    </md-toolbar>
+  </div>
+</form>
 
