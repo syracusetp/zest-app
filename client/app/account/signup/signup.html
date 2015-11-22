@@ -46,6 +46,14 @@
           </p>
         </div>
 
+        <div class="form-group">
+          <label>Neighborhood</label>
+
+          <select class="form-control"
+                  ng-model="user.ZoneId"
+                  ng-options="z.id as z.neighborhood for z in zones"></select>
+        </div>
+
         <div class="form-group" ng-class="{ 'has-success': form.password.$valid && submitted,
                                             'has-error': form.password.$invalid && submitted }">
           <label>Password</label>

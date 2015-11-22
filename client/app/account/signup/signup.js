@@ -6,11 +6,21 @@ angular.module('App.signup',['ui.router'])
       .state('signup', {
         url: '/signup',
         templateUrl: 'app/account/signup/signup.html',
-        controller: 'SignupCtrl'
+        controller: 'SignupCtrl',
+        resolve:{
+          zones: function(AuxApiService, _){
+            return AuxApiService.fetchZones().then(function(zones){
+              return _.sortBy(_.filter(zones, 'active'), 'neighborhood');
+            });
+          }
+        }
       });
   })
-  .controller('SignupCtrl', function ($scope, Auth, $location, $window) {
-    $scope.user = {};
+  .controller('SignupCtrl', function ($scope, Auth, $location, $window, zones, $localStorage, $state) {
+    $scope.zones = zones;
+    $scope.user = {
+      ZoneId: $localStorage.ZoneId || $scope.zones[0].id
+    };
     $scope.errors = {};
 
     $scope.register = function(form) {
@@ -21,11 +31,14 @@ angular.module('App.signup',['ui.router'])
           name: $scope.user.name,
           email: $scope.user.email,
           mobilePhone: $scope.user.mobilePhone,
+          ZoneId: $scope.user.ZoneId,
           password: $scope.user.password
         })
         .then( function() {
           // Account created, redirect to home
-          $location.path('/');
+          $state.go($localStorage.next, {zoneId: $localStorage.zoneId});
+          delete $localStorage.next;
+          delete $localStorage.zoneId;
         })
         .catch( function(err) {
           err = err.data;

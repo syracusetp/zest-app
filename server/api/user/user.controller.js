@@ -42,12 +42,14 @@ exports.create = function (req, res, next) {
       email: user.email,
       mobilePhone: user.mobilePhone,
       firstName: firstName,
-      lastName: names.join(' ')
+      lastName: names.join(' '),
+      ZoneId: req.body.ZoneId
     };
     db.Customer.create(customerObject).then(function(customer) {
       res.json({
         token: token,
         CustomerId: customer.id,
+        ZoneId: customer.ZoneId,
         hasBookings: false
       });
     })

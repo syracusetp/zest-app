@@ -10,7 +10,7 @@ angular.module('App.main',['ui.router'])
         controllerAs: 'vm'
       });
   })
-  .controller('MainCtrl', function ($q, $state, _, AuxApiService) {
+  .controller('MainCtrl', function ($q, $state, _, AuxApiService, Auth, $localStorage) {
 
     var vm = this;
 
@@ -32,7 +32,13 @@ angular.module('App.main',['ui.router'])
 
     vm.bookNow = function(service){
       service = service ? service : vm.service.name;
-      $state.go(service);
+      if(Auth.isLoggedIn()){
+        $state.go(service, {zoneId: vm.zone.id});
+      }else{
+        $localStorage.zoneId = vm.zone.id;
+        $localStorage.next = service;
+        $state.go('login');
+      }
     };
 
   });

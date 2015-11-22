@@ -3,6 +3,10 @@
          units: DataTypes.DECIMAL(10, 2),
          type: DataTypes.STRING,
          instructions: DataTypes.STRING,
+         address: DataTypes.TEXT,
+         city: DataTypes.STRING,
+         state: DataTypes.STRING,
+         postcode: DataTypes.STRING,
          notes: DataTypes.TEXT
      }, {
          paranoid: true,

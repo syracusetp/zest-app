@@ -9,7 +9,7 @@ angular.module('App.login',['ui.router'])
         controller: 'LoginCtrl'
       });
   })
-  .controller('LoginCtrl', function ($scope, Auth, $location, $window) {
+  .controller('LoginCtrl', function ($scope, Auth, $location, $window, $state, $localStorage) {
     $scope.user = {};
     $scope.errors = {};
 
@@ -22,8 +22,11 @@ angular.module('App.login',['ui.router'])
           password: $scope.user.password
         })
         .then( function() {
-          // Logged in, redirect to home
-          $location.path('/');
+          // Logged in, redirect to next
+          var next = $state.get($localStorage.next) ? $localStorage.next : 'main';
+          $state.go(next, {zoneId: $localStorage.zoneId});
+          delete $localStorage.next;
+          delete $localStorage.zoneId;
         })
         .catch( function(err) {
           $scope.errors.other = err.message;

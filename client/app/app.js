@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('zestApp', [
+  'ngStorage',
   'ngCookies',
   'ngResource',
   'ngSanitize',

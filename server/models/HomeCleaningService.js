@@ -16,6 +16,10 @@
          kitchens: DataTypes.DECIMAL(10, 2),
          others: DataTypes.DECIMAL(10, 2),
          instructions: DataTypes.STRING,
+         address: DataTypes.TEXT,
+         city: DataTypes.STRING,
+         state: DataTypes.STRING,
+         postcode: DataTypes.STRING,
          notes: DataTypes.TEXT
      }, {
          paranoid: true,

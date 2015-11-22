@@ -17,6 +17,26 @@ module.exports = function(sequelize, DataTypes) {
           onDelete: 'RESTRICT',
           onUpdate: 'RESTRICT'
         });
+        Zone.hasMany(models.HomeCleaningService, {
+          onDelete: 'RESTRICT',
+          onUpdate: 'RESTRICT'
+        });
+        Zone.hasMany(models.AirConditionerService, {
+          onDelete: 'RESTRICT',
+          onUpdate: 'RESTRICT'
+        });
+        Zone.hasMany(models.OfficeCleaningService, {
+          onDelete: 'RESTRICT',
+          onUpdate: 'RESTRICT'
+        });
+        Zone.hasMany(models.PostConstructionCleaningService, {
+          onDelete: 'RESTRICT',
+          onUpdate: 'RESTRICT'
+        });
+        Zone.hasMany(models.FumigationService, {
+          onDelete: 'RESTRICT',
+          onUpdate: 'RESTRICT'
+        });
       }
     }
   });
