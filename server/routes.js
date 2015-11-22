@@ -16,6 +16,7 @@ module.exports = function(app) {
   app.use('/api/bookings', require('./api/booking'));
   app.use('/api/referrals', require('./api/referral'));
   app.use('/api/ratings', require('./api/rating'));
+  app.use('/api/homecleanings', require('./api/homecleaning'));
 
   app.use('/auth', require('./auth'));
 

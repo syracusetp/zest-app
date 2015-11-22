@@ -34,14 +34,14 @@ module.exports = function(db) {
     // --------------  Booking Service Types
     db.ServiceType.create({
       rank: 0,
-      name: 'home-cleaning',
+      name: 'homecleaning',
       description: 'Home Cleaning',
       iconSrc: '/assets/images/noun_170055_cc.png',
       active: true
     });
     db.ServiceType.create({
       rank: 1,
-      name: 'office-cleaning',
+      name: 'officecleaning',
       description: 'Office Cleaning',
       iconSrc: '/assets/images/noun_17159_cc.png',
       active: true
@@ -55,14 +55,14 @@ module.exports = function(db) {
     });
     db.ServiceType.create({
       rank: 3,
-      name: 'air-conditioner',
+      name: 'airconditioner',
       description: 'Air Conditioner',
       iconSrc: '/assets/images/noun_36185_cc.png',
       active: true
     });
     db.ServiceType.create({
       rank: 4,
-      name: 'post-construction-cleaning',
+      name: 'postconstructioncleaning',
       description: 'Post Construction Cleaning',
       iconSrc: '/assets/images/noun_210477_cc.png',
       active: true
