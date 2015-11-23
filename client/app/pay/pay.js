@@ -47,7 +47,12 @@ angular.module('App.pay',[
     });
 
     function checkoutOnline(){
-      console.log('checkout online');
+      $mdDialog.show(
+        $mdDialog.alert()
+          .title('Error')
+          .content('Online Checkout not yet available.')
+          .ok('Ok')
+      );
     }
 
     function checkoutCash(){
@@ -55,7 +60,6 @@ angular.module('App.pay',[
 
       vm.checkout = new Checkout({
         price: vm.booking.total,
-        paid: false,
         type: 'cash',
         notes: 'BookingId='+vm.booking.id
       });

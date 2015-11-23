@@ -39,13 +39,13 @@ angular.module('App.homecleaning',[
     };
 
     vm.total = function(){
-      return (vm.hours()* (vm.frequency ? vm.frequency.rate : 0) + (vm.zone ? vm.zone.rate : 0) + vm.extras());
+      return (vm.hours()* (vm.frequency ? parseFloat(vm.frequency.rate) : 0) + (vm.zone ? parseFloat(vm.zone.rate) : 0) + vm.extras());
     };
 
     vm.hours = function(){
       var hrs = 2;
       if(vm.service && vm.service.bedrooms && vm.service.bathrooms){
-        hrs += (vm.service.bedrooms-1)*0.5 + (vm.service.bathrooms-1)*0.5;
+        hrs += (parseInt(vm.service.bedrooms)-1)*0.5 + (parseInt(vm.service.bathrooms)-1)*0.5;
       }
       return hrs;
     };

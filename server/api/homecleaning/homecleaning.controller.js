@@ -30,8 +30,8 @@ exports.create = function(req, res) {
     ServiceTypeId: req.body.ServiceTypeId,
     FrequencyId: req.body.FrequencyId,
     CustomerId: req.body.CustomerId,
-    hours: req.body.hours,
-    total: req.body.total
+    hours: parseFloat(req.body.hours),
+    total: parseFloat(req.body.total)
   }).then(function(booking){
     // Second, link booking to cleaning, then create cleaning
     req.body.BookingId = booking.id;
