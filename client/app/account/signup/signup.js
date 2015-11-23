@@ -33,8 +33,9 @@ angular.module('App.signup',['ui.router'])
           password: $scope.user.password
         })
         .then( function() {
-          // Account created, redirect to home
-          $state.go($localStorage.next, {zoneId: $localStorage.zoneId});
+          // Account created, redirect to next
+          var next = $state.get($localStorage.next) ? $localStorage.next : 'main';
+          $state.go(next, {zoneId: $localStorage.zoneId});
           delete $localStorage.next;
           delete $localStorage.zoneId;
         })

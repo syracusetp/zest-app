@@ -9,7 +9,7 @@ angular.module('App.homecleaning',[
   .config(function ($stateProvider) {
     $stateProvider
       .state('homecleaning', {
-        url: '/homecleaning/{homeCleaningServiceId}/{zoneId}',
+        url: '/homecleaning/{homeCleaningId}',
         templateUrl: 'app/homecleaning/homecleaning.html',
         controller: 'HomeCleaningCtrl',
         controllerAs: 'vm'
@@ -28,11 +28,13 @@ angular.module('App.homecleaning',[
 
     vm.extras = function(){
       var net = 0;
-      _.each(vm.service.extras, function(extra){
-        if(extra.selected){
-          net += parseFloat(extra.rate);
-        }
-      });
+      if(vm.service){
+        _.each(vm.service.extras, function(extra){
+          if(extra.selected){
+            net += parseFloat(extra.rate);
+          }
+        });
+      }
       return net;
     };
 
@@ -56,9 +58,10 @@ angular.module('App.homecleaning',[
       vm.service.FrequencyId = vm.frequency.id;
       vm.service.CustomerId = Auth.getCustomerId();
       console.log('service=>',vm.service);
-      vm.service.$save(function(service){
+      var action = vm.service.id ? '$update' : '$save';
+      vm.service[action]({id: vm.service.id}, function(service){
         vm.loading = false;
-        service.extras = extras;
+        vm.service.extras = extras;
         console.log('s=',service);
       }, function(resp){
         vm.loading = false;
@@ -84,7 +87,7 @@ angular.module('App.homecleaning',[
         vm.service.city = vm.service.city || customer.city;
         vm.service.state = vm.service.state || customer.state;
         vm.service.postcode = vm.service.postcode || customer.postcode;
-        vm.service.ZoneId = parseInt(vm.service.ZoneId || $stateParams.zoneId || customer.ZoneId);
+        vm.service.ZoneId = parseInt(vm.service.ZoneId || customer.ZoneId);
       });
       qs.push(fCustomer);
 
@@ -94,11 +97,9 @@ angular.module('App.homecleaning',[
       qs.push(fZones);
 
       var fExtras = AuxApiService.fetchExtras().then(function(extras){
-        // TODO: figure this out
-        // If HomeCleaningExtras exist in service object, then set them as selected
         vm.service.extras = _.map(_.sortBy(_.filter(extras, 'active'), 'rank'), function(extra){
-          _.each(vm.service.extras, function(HomeCleaningExtras){
-            if(extra.name === HomeCleaningExtras.name){
+          _.each(vm.service.HomeCleaningExtras, function(HomeCleaningExtra){
+            if(extra.name === HomeCleaningExtra.name){
               extra.selected = true;
             }
           });
@@ -119,7 +120,7 @@ angular.module('App.homecleaning',[
       qs.push(fServiceTypes);
 
       if(bookingId){
-        // Will be used to set the freq if it exists
+        // Will be used to set the freq in finally() if it exists
         var fBooking = BookingApiService.fetchBooking(bookingId).then(function(booking){
           vm.booking = booking;
         });
@@ -147,9 +148,9 @@ angular.module('App.homecleaning',[
     }
 
     function init(){
-      if($stateParams.homeCleaningServiceId){
+      if($stateParams.homeCleaningId){
         vm.loading = true;
-        HomeCleaning.get({id: $stateParams.homeCleaningServiceId}, function(service){
+        HomeCleaning.get({id: $stateParams.homeCleaningId}, function(service){
           vm.service = service;
           fetchDetails(vm.service.BookingId);
         }, function(resp){

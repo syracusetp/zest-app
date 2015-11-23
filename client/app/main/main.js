@@ -33,7 +33,7 @@ angular.module('App.main',['ui.router'])
     vm.bookNow = function(service){
       service = service ? service : vm.service.name;
       if(Auth.isLoggedIn()){
-        $state.go(service, {zoneId: vm.zone.id});
+        $state.go(service);
       }else{
         $localStorage.zoneId = vm.zone.id;
         $localStorage.next = service;
