@@ -17,12 +17,27 @@ exports.show = function(req, res) {
             id: req.params.id
         },
         include: [{
-            all: true,
-            nested: true
+            model: db.ServiceType
+        },{
+          model: db.Frequency
         }]
     }).then(function(booking) {
         return res.json(200, booking);
     });
+};
+
+exports.deep = function(req, res) {
+  db.Booking.findOne({
+    where: {
+      id: req.params.id
+    },
+    include: [{
+      all: true,
+      nested: true
+    }]
+  }).then(function(booking) {
+    return res.json(200, booking);
+  });
 };
 
 exports.create = function(req, res) {

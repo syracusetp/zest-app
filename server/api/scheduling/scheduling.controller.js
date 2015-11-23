@@ -305,7 +305,8 @@ exports.complete = function(req, res) {
         EmployeeId = req.body.EmployeeId,
         CustomerId = req.body.CustomerId,
         BookingId = req.body.BookingId,
-        serviceId = req.body.serviceId,
+        // WARNING: had to remove hard-link for performance, maybe a danger
+        //serviceId = req.body.serviceId,
         hours = req.body.hours,
         date = moment(req.body.date),
         etime = req.body.etime,
@@ -332,7 +333,14 @@ exports.complete = function(req, res) {
         serviceObject = 'HomeCleaningService';
     }
 
-    db[serviceObject].findById(serviceId).then(function(cleaning) {
+    // WARNING: hard-link removed for performance, maybe danger if service can be associated w multiple bookings
+    //db[serviceObject].findById(serviceId)
+    db[serviceObject].findOne({
+        where: {
+          BookingId: BookingId
+        }
+      })
+      .then(function(cleaning) {
         cleaning.updateAttributes({
             FrequencyId: FrequencyId
         }).then(function(cleaning) {

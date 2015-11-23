@@ -76,7 +76,8 @@ angular.module('App.schedule',[
         EmployeeId: vm.EmployeeId,
         CustomerId: vm.booking.CustomerId,
         BookingId: vm.booking.id,
-        serviceId: vm.booking[serviceObject].id,
+        // WARNING: had to remove this hard-link for performance, maybe a danger
+        //serviceId: vm.booking[serviceObject].id,
         hours: vm.booking.hours,
         date: moment(vm.date),
         etime: vm.time,
