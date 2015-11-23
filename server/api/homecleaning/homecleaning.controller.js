@@ -25,11 +25,35 @@ exports.show = function(req, res) {
 };
 
 exports.create = function(req, res) {
+  // First, create the booking
+  db.Booking.create({
+    ServiceTypeId: req.body.ServiceTypeId,
+    FrequencyId: req.body.FrequencyId,
+    CustomerId: req.body.CustomerId
+  }).then(function(booking){
+    // Second, link booking to cleaning, then create cleaning
+    req.body.BookingId = booking.id;
     db.HomeCleaningService.create(req.body).then(function(service) {
+      var qs = [];
+      // Finally create cleaning service extras
+      if(req.body.HomeCleaningServiceExtras){
+        _.each(req.body.HomeCleaningServiceExtras, function(extra){
+          extra.HomeCleaningServiceId = service.id;
+          extra.HomeCleaningExtraId = extra.id;
+          var x = db.HomeCleaningServiceExtra.create(extra);
+          qs.push(x);
+        });
+      }
+
+      Q.all(qs).finally(function(){
         return res.json(200, service)
-    }).error(function(error) {
-        return res.json(500, error);
+      });
+
     });
+
+  }).error(function(){
+    return res.json(500, error);
+  });
 };
 
 exports.update = function(req, res) {
@@ -50,4 +74,14 @@ exports.destroy = function(req, res) {
             return res.json(500, error);
         })
     });
+};
+
+exports.extras = function(req, res) {
+  db.HomeCleaningServiceExtra.findOne({
+    where: {
+      HomeCleaningServiceId: req.params.id
+    }
+  }).then(function(extras) {
+    return res.json(200, extras);
+  });
 };

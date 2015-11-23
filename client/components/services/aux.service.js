@@ -26,6 +26,11 @@ function LocalApiService($resource) {
     fetchFrequencies: function() {
       var url = '/api/aux/frequencies';
       return $resource(url, {}).query().$promise;
+    },
+
+    fetchPets: function(){
+      var url = '/api/aux/pets';
+      return $resource(url, {}).query().$promise;
     }
 
   };

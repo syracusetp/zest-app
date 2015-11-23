@@ -20,6 +20,10 @@
          city: DataTypes.STRING,
          state: DataTypes.STRING,
          postcode: DataTypes.STRING,
+         dogs: DataTypes.BOOLEAN,
+         cats: DataTypes.BOOLEAN,
+         otherPets: DataTypes.BOOLEAN,
+         petsDescription: DataTypes.TEXT,
          notes: DataTypes.TEXT
      }, {
          paranoid: true,
@@ -36,10 +40,6 @@
                  onDelete: 'CASCADE',
                  onUpdate: 'CASCADE'
                });
-               HomeCleaningService.hasMany(models.HomeCleaningPet, {
-                    onDelete: 'CASCADE',
-                    onUpdate: 'CASCADE'
-                });
              }
          }
      });
