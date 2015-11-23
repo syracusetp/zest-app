@@ -1,5 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   var ServiceRating = sequelize.define("ServiceRating", {
+    date: DataTypes.DATE,
     rating: DataTypes.BIGINT,
     comments: DataTypes.TEXT,
     notes: DataTypes.TEXT

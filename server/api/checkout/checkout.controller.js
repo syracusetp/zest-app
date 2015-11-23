@@ -3,13 +3,13 @@
 var db = require('../../models');
 
 exports.index = function(req, res) {
-    db.ServiceRating.findAll({}).then(function(rating) {
-        return res.json(200, rating);
+    db.Checkout.findAll({}).then(function(checkout) {
+        return res.json(200, checkout);
     });
 };
 
 exports.show = function(req, res) {
-    db.ServiceRating.findOne({
+    db.Checkout.findOne({
       where: {
         id: req.params.id
       },
@@ -17,23 +17,23 @@ exports.show = function(req, res) {
         all: true,
         nested: true
       }]
-    }).then(function(rating) {
-        return res.json(200, rating);
+    }).then(function(checkout) {
+        return res.json(200, checkout);
     });
 };
 
 exports.create = function(req, res) {
-    db.ServiceRating.create(req.body).then(function(rating) {
-      return res.json(200, rating)
+    db.Checkout.create(req.body).then(function(checkout) {
+      return res.json(200, checkout)
     }).error(function(error) {
         return res.json(500, error);
     });
 };
 
 exports.update = function(req, res) {
-    db.ServiceRating.findById(req.body.id).then(function(rating) {
-      rating.updateAttributes(req.body).then(function(rating) {
-            return res.json(200, rating);
+    db.Checkout.findById(req.body.id).then(function(checkout) {
+      checkout.updateAttributes(req.body).then(function(checkout) {
+            return res.json(200, checkout);
         }).error(function(error) {
             return res.json(500, error);
         })
@@ -41,9 +41,9 @@ exports.update = function(req, res) {
 };
 
 exports.destroy = function(req, res) {
-    db.ServiceRating.findById(req.body.id).then(function(rating) {
-      rating.destroy(req.body).then(function(rating) {
-            return res.json(200, rating);
+    db.Checkout.findById(req.body.id).then(function(checkout) {
+      checkout.destroy(req.body).then(function(checkout) {
+            return res.json(200, checkout);
         }).error(function(error) {
             return res.json(500, error);
         })

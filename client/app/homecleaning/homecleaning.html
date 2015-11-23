@@ -31,7 +31,7 @@
           <label class="btn btn-default" ng-model="vm.service.dogs" btn-checkbox style="width:34%">Dogs</label>
           <label class="btn btn-default" ng-model="vm.service.otherPets" btn-checkbox style="width:32%">Other</label>
         </div>
-        <input ng-if="vm.service.cats || vm.service.dogs || vm.service.other"
+        <input ng-if="vm.service.cats || vm.service.dogs || vm.service.otherPets"
                type="text" class="form-control pets-describe"
                ng-model="vm.service.petsDescription"
                placeholder="Describe eg. Black cat, white cat">
@@ -90,21 +90,17 @@
                   type="submit"
                   ng-disabled="form.$invalid"
                   ng-click="vm.next()"
-                  ng-if="!vm.continuing">Next</button>
+                  ng-if="!vm.continuing">Continue</button>
         </div>
       </div>
     </md-content>
-    <md-toolbar style="height:100px;background:gray">
+    <md-toolbar class="homecleaning">
       <div class="md-toolbar-tools">
-        <div layout="column" layout-align="center center"  style="width:100%;text-align: center;margin-top: 50px;font-size:13px">
+        <div layout="column" layout-align="center center">
           <table class="price">
             <tr>
               <td>{{vm.hours()}} hour cleaning (₦{{vm.frequency.rate}}/hour)</td>
               <td>₦{{(vm.hours()*vm.frequency.rate).toFixed(1)}}</td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
             </tr>
             <tr ng-if="vm.zone.rate">
               <td>+ {{vm.zone.neighborhood}} transportation </td>

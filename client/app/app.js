@@ -19,7 +19,10 @@ angular.module('zestApp', [
   'App.settings',
   'App.signup',
   'App.main',
-  'App.homecleaning'
+  'App.homecleaning',
+  'App.schedule',
+  'App.pay',
+  'App.checkout'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
@@ -46,6 +49,7 @@ angular.module('zestApp', [
           $location.path('/login');
           // remove any stale tokens
           $cookieStore.remove('token');
+          $cookieStore.remove('CustomerId');
           return $q.reject(response);
         }
         else {
@@ -57,6 +61,7 @@ angular.module('zestApp', [
 
   .run(function ($rootScope, $location, Auth, ngWrap) {
     ngWrap('_');
+    ngWrap('moment');
 
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function (event, next) {

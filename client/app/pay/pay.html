@@ -1,0 +1,56 @@
+<form name="form" novalidate>
+  <div layout="column" layout-align="center center" id="homecleaning-form-container">
+    <md-content flex class="standard-form" ng-if="vm.loading">
+      <span class="fa fa-spinner fa-spin"></span>
+    </md-content>
+    <md-content flex class="standard-form" ng-if="!vm.loading">
+      <h4 class="header">Checkout</h4>
+
+      <div class="form-item">
+        <!--div class="bottom-margin-sm"><b>How often?</b></div-->
+        <md-radio-group ng-model="vm.method" class="payment">
+          <md-radio-button value="online"
+                           class="md-primary">Pay Online</md-radio-button>
+          <md-radio-button value="cash"
+                           class="md-primary">Pay with Cash</md-radio-button>
+        </md-radio-group>
+      </div>
+
+      <div class="form-group">
+        <button type="button" class="btn btn-success submit" ng-if="vm.working">
+          <span class="fa fa-spinner fa-spin"></span>
+        </button>
+        <button class="btn btn-success submit"
+                type="submit"
+                ng-disabled="form.$invalid"
+                ng-click="vm.checkout()"
+                ng-if="!vm.working">Checkout</button>
+      </div>
+    </md-content>
+    <md-toolbar style="height:100px;background:gray">
+      <div class="md-toolbar-tools">
+        <div layout="column" layout-align="center center"  style="width:100%;text-align: center;margin-top: 50px;font-size:13px">
+          <table class="price">
+            <tr>
+              <td>{{vm.booking.hours}} hour {{vm.booking.ServiceType.description}}</td>
+              <td>₦{{vm.booking.total.toFixed(1)}}</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><b>Total</b></td>
+              <td><b>₦{{vm.booking.total.toFixed(1)}}</b></td>
+            </tr>
+          </table>
+          <div></div><br>
+          <span ></span>
+          <div style="width:300px;font-size:11px">
+          </div>
+        </div>
+      </div>
+    </md-toolbar>
+  </div>
+</form>
+

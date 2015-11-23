@@ -1,0 +1,20 @@
+<form name="form" novalidate>
+  <div layout="column" layout-align="center center" id="homecleaning-form-container">
+    <md-content flex class="standard-form" ng-if="vm.loading">
+      <span class="fa fa-spinner fa-spin"></span>
+    </md-content>
+    <md-content flex class="standard-form" ng-if="!vm.loading">
+      <h4 class="header">You're Done!</h4>
+
+      <h3><span class="text-success glyphicon glyphicon-ok"></span></h3>
+
+      <p>****INSERT MESSAGE HERE****</p>
+
+      <div class="form-group">
+        <button class="btn btn-primary submit"
+                ui-sref="bookings">View Bookings</button>
+      </div>
+    </md-content>
+  </div>
+</form>
+

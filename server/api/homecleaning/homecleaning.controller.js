@@ -29,7 +29,9 @@ exports.create = function(req, res) {
   db.Booking.create({
     ServiceTypeId: req.body.ServiceTypeId,
     FrequencyId: req.body.FrequencyId,
-    CustomerId: req.body.CustomerId
+    CustomerId: req.body.CustomerId,
+    hours: req.body.hours,
+    total: req.body.total
   }).then(function(booking){
     // Second, link booking to cleaning, then create cleaning
     req.body.BookingId = booking.id;
@@ -51,7 +53,7 @@ exports.create = function(req, res) {
 
     });
 
-  }).error(function(){
+  }).error(function(error){
     return res.json(500, error);
   });
 };

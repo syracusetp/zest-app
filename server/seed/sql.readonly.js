@@ -89,7 +89,7 @@ module.exports = function(db) {
         default: true,
         name: 'weekly',
         description: 'Weekly',
-        rate: 1530
+        rate: 1535
     });
     db.Frequency.create({
         rank: 4,

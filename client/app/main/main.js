@@ -10,7 +10,7 @@ angular.module('App.main',['ui.router'])
         controllerAs: 'vm'
       });
   })
-  .controller('MainCtrl', function ($q, $state, _, AuxApiService, Auth, $localStorage) {
+  .controller('MainCtrl', function ($q, $state, _, AuxApiService, Auth, $localStorage, CustomerApiService) {
 
     var vm = this;
 
@@ -28,6 +28,16 @@ angular.module('App.main',['ui.router'])
 
     $q.all([fServices, fZones]).finally(function(){
       vm.loading = false;
+      if(Auth.isLoggedIn()){
+        vm.loading = true;
+        CustomerApiService.fetchCustomer(Auth.getCustomerId()).then(function(customer){
+          if(customer && customer.ZoneId) {
+            vm.zone = _.find(vm.zones, {id: customer.ZoneId});
+          }
+        }).finally(function(){
+          vm.loading = false;
+        });
+      }
     });
 
     vm.bookNow = function(service){

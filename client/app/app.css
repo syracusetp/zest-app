@@ -73,3 +73,15 @@
   color:orange;
 }
 
+.btn-default.active{
+  color: #333;
+  background-color: orange;
+  border-color: #FF8C00;
+}
+
+.md-primary .md-on {
+  background-color: orange !important;
+}
+md-radio-button.md-checked .md-off{
+  border-color: #FF8C00 !important;
+}

@@ -16,7 +16,7 @@ angular.module('App.homecleaning',[
       });
   })
   .controller('HomeCleaningCtrl', function ($q, Auth, AuxApiService, _, $window, $stateParams, HomeCleaning,
-                                            $mdDialog, CustomerApiService, BookingApiService) {
+                                            $mdDialog, CustomerApiService, BookingApiService, $state, Customer) {
     var vm = this;
 
     init();
@@ -57,12 +57,29 @@ angular.module('App.homecleaning',[
       vm.service.ServiceTypeId = vm.ServiceTypeId;
       vm.service.FrequencyId = vm.frequency.id;
       vm.service.CustomerId = Auth.getCustomerId();
-      console.log('service=>',vm.service);
+      vm.service.hours = vm.hours();
+      vm.service.total = vm.total();
+
+      if(!vm.customer.address && !vm.customer.city){
+        vm.customer.address = vm.service.address;
+        vm.customer.city = vm.service.city;
+        vm.customer = new Customer(vm.customer);
+        vm.customer.$update({id: vm.customer.id}, function(){
+        }, function(resp){
+          $mdDialog.show(
+            $mdDialog.alert()
+              .title('Error')
+              .content(resp)
+              .ok('Ok')
+          );
+        });
+      }
+
       var action = vm.service.id ? '$update' : '$save';
       vm.service[action]({id: vm.service.id}, function(service){
         vm.loading = false;
         vm.service.extras = extras;
-        console.log('s=',service);
+        $state.go('schedule',{bookingId: service.BookingId});
       }, function(resp){
         vm.loading = false;
         $mdDialog.show(
@@ -83,6 +100,7 @@ angular.module('App.homecleaning',[
       var qs = [];
 
       var fCustomer = CustomerApiService.fetchCustomer(Auth.getCustomerId()).then(function(customer){
+        vm.customer = customer;
         vm.service.address = vm.service.address || customer.address;
         vm.service.city = vm.service.city || customer.city;
         vm.service.state = vm.service.state || customer.state;

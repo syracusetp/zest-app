@@ -18,7 +18,8 @@
     "angular-number-picker": "~1.2.2",
     "angular-input-masks": "~2.1.0",
     "angular-messages": "ng-messages#*",
-    "ngstorage": "ng-storage#~0.4.2"
+    "ngstorage": "ng-storage#~0.4.2",
+    "moment": "~2.10.6"
   },
   "devDependencies": {
     "angular-mocks": "~1.4",
