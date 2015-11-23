@@ -13,7 +13,7 @@ var UserSchema = new Schema({
     default: 'user'
   },
   CustomerId: Number,
-  mobilePhone: Number,
+  mobilePhone: String,
   hashedPassword: String,
   provider: String,
   salt: String,

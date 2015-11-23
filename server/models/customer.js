@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
         },
         mobilePhone: {
-            type: DataTypes.BIGINT,
+            type: DataTypes.STRING,
             allowNull: false
         },
         firstName: {
@@ -18,7 +18,7 @@ module.exports = function(sequelize, DataTypes) {
         },
         lastName: DataTypes.STRING,
         company: DataTypes.STRING,
-        homePhone: DataTypes.BIGINT,
+        homePhone: DataTypes.STRING,
         address: DataTypes.TEXT,
         city: DataTypes.STRING,
         state: DataTypes.STRING,

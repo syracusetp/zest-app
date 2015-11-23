@@ -5,6 +5,11 @@ module.exports = function(sequelize, DataTypes) {
           allowNull: false,
           defaultValue: true
         },
+        displayRate: {
+          type: DataTypes.BOOLEAN,
+          allowNull: false,
+          defaultValue: true
+        },
         name: DataTypes.STRING,
         description: DataTypes.STRING,
         iconSrc: DataTypes.STRING,

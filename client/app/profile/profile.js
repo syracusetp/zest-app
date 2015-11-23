@@ -2,7 +2,6 @@
 
 angular.module('App.profile',[
   'ui.router',
-  'ui.utils.masks',
   'ngMessages',
   'App.services.api.customer',
   'App.services.api.aux'

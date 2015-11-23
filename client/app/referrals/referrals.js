@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('App.referrals',['ui.router', 'App.services.api.referral','ui.utils.masks'])
+angular.module('App.referrals',['ui.router', 'App.services.api.referral'])
   .config(function ($stateProvider) {
     $stateProvider
       .state('referrals', {

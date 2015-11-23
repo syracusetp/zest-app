@@ -4,6 +4,11 @@ module.exports = function(sequelize, DataTypes) {
     name: DataTypes.STRING,
   	description: DataTypes.STRING,
     rate: DataTypes.DECIMAL(10,2),
+    displayRate: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
+    },
     default: DataTypes.BOOLEAN,
     active: {
       type: DataTypes.BOOLEAN,

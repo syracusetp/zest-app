@@ -73,36 +73,36 @@ module.exports = function(db) {
         rank: 1,
         active: true,
         name: 'once',
-        description: 'Once',
+        description: 'One-off',
         rate: 1800
     });
     db.Frequency.create({
         rank: 2,
-        active: true,
+        active: false,
         name: 'daily',
         description: 'Daily',
-        rate: 1350
+        rate: 1313
     });
     db.Frequency.create({
         rank: 3,
         active: true,
         default: true,
         name: 'weekly',
-        description: 'Weekly',
-        rate: 1535
+        description: 'Weekly (4 times a month)',
+        rate: 1313
     });
     db.Frequency.create({
         rank: 4,
         active: true,
         name: 'bi-weekly',
-        description: 'Bi-Weekly',
-        rate: 1620
+        description: 'Twice a month',
+        rate: 1400
     });
     db.Frequency.create({
         rank: 5,
         active: true,
         name: 'monthly',
-        description: 'Monthly',
+        description: 'Once a month',
         rate: 1800
     });
 

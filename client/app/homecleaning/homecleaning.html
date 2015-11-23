@@ -16,7 +16,7 @@
         <div layout="row" layout-sm="row" layout-wrap flex class="extras" layout-align="center center">
           <div ng-repeat="item in vm.service.extras" ng-click='item.selected = !item.selected'>
             <div class="extra-item {{item.selected===true ? 'selected':''}}">
-              <img ng-src="{{item.iconSrc}}"> {{item.description}} (₦{{item.rate}})
+              <img ng-src="{{item.iconSrc}}"> {{item.description}} <span ng-if="item.displayRate">(₦{{item.rate}})</span>
             </div>
           </div>
         </div>
@@ -41,7 +41,7 @@
         <md-radio-group ng-model="vm.freq" class="frequency" ng-change="vm.update()">
           <md-radio-button ng-repeat="freq in vm.frequencies"
                            value="{{freq.name}}"
-                           class="md-primary">{{freq.description}} (₦{{freq.rate}}/hr)</md-radio-button>
+                           class="md-primary">{{freq.description}} <span ng-if="freq.displayRate">(₦{{freq.rate}}/hr)</span></md-radio-button>
         </md-radio-group>
       </div>
       <div class="form-item">
