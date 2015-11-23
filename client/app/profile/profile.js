@@ -15,7 +15,8 @@ angular.module('App.profile',[
         controllerAs: 'vm'
       });
   })
-  .controller('ProfileCtrl', function (CustomerApiService, Auth, AuxApiService, $q, _, $scope, Customer, $mdDialog) {
+  .controller('ProfileCtrl', function (CustomerApiService, Auth, AuxApiService, $q, _, $scope,
+                                       Customer, $mdDialog, $timeout) {
     var vm = this;
 
     vm.loading = true;
@@ -54,6 +55,9 @@ angular.module('App.profile',[
       vm.customer.$update({id: vm.customer.id},function(){
         vm.saving = false;
         vm.done = true;
+        $timeout(function(){
+          vm.done = false;
+        },1500);
 
       }, function(resp){
         vm.saving = false;

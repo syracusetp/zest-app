@@ -1,7 +1,7 @@
 <div layout="column" layout-align="center center">
   <md-content flex class="standard-form">
     <h4 class="header">Refer a Friend</h4>
-    <form class="form" name="userForm" ng-if="!vm.loading" ng-submit="vm.send(userForm)" novalidate>
+    <form class="form" name="userForm" ng-if="!vm.loading && !vm.done" ng-submit="vm.send(userForm)" novalidate>
       <div class="form-group" ng-class="{ 'has-error' : userForm.firstName.$invalid && userForm.firstName.$touched }">
         <input
           class="form-control"
@@ -76,6 +76,15 @@
       <h3>Thank You!</h3>
         <p>Your referral has been sent.</p>
         <h3><span class="text-success glyphicon glyphicon-ok"></span></h3>
+      <div class="form-group">
+        <button type="button" class="btn btn-success submit" ng-click="vm.done=false">
+          Refer Another Friend
+        </button>
+        <br><br>
+        <button type="button" class="btn btn-primary submit" ui-sref="main">
+          Return to Home Page
+        </button>
+      </div>
     </div>
   </md-content>
 </div>
