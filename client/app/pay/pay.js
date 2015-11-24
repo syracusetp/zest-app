@@ -17,7 +17,7 @@ angular.module('App.pay',[
   .controller('PayCtrl', function ($q, Checkout, _, $window, $stateParams, Booking, $mdDialog, $state) {
     var vm = this;
 
-    vm.method = 'online';
+    vm.method = 'transfer';
 
     vm.loading = true;
     vm.booking = Booking.get({id: $stateParams.bookingId}, function(booking){
@@ -34,8 +34,8 @@ angular.module('App.pay',[
     });
 
     vm.checkout = function(){
-      if(vm.method === 'cash'){
-        checkoutCash();
+      if(vm.method === 'transfer'){
+        checkoutTransfer();
       }else{
         checkoutOnline();
       }
@@ -55,7 +55,7 @@ angular.module('App.pay',[
       );
     }
 
-    function checkoutCash(){
+    function checkoutTransfer(){
       vm.working = true;
 
       vm.checkout = new Checkout({
@@ -67,7 +67,7 @@ angular.module('App.pay',[
       vm.checkout.$save(function(checkout){
         vm.booking.CheckoutId = checkout.id;
         vm.booking.$update({id: vm.booking.id},function(){
-          $state.go('checkout',{bookingId: vm.booking.id});
+          $state.go('checkout',{bookingId: vm.booking.id, method: vm.method});
           vm.working = false;
         }, function(resp){
           $mdDialog.show(

@@ -40,7 +40,8 @@
 
 .standard-form{
   width:320px;
-  text-align: center
+  text-align: center;
+  padding: 10px;
 }
 
 .form-item{
@@ -82,6 +83,7 @@
 .md-primary .md-on {
   background-color: orange !important;
 }
+
 md-radio-button.md-checked .md-off{
   border-color: #FF8C00 !important;
 }

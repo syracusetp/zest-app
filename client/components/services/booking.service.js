@@ -18,6 +18,11 @@ function BookingApiService($resource) {
     fetchBooking: function(bookingId) {
       var url = '/api/bookings/:bookingId';
       return $resource(url, {bookingId: bookingId}).get().$promise;
+    },
+
+    fetchBookingsByCustomerId: function(customerId){
+      var url = '/api/bookings/customer/:customerId';
+      return $resource(url, {customerId: customerId}).query().$promise;
     }
 
   };

@@ -26,6 +26,21 @@ exports.show = function(req, res) {
     });
 };
 
+exports.customer = function(req, res) {
+  db.Booking.findAll({
+    where: {
+      CustomerId: req.params.id
+    },
+    include: [{
+      model: db.ServiceType
+    },{
+      model: db.Frequency
+    }]
+  }).then(function(booking) {
+    return res.json(200, booking);
+  });
+};
+
 exports.deep = function(req, res) {
   db.Booking.findOne({
     where: {

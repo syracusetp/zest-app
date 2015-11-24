@@ -12,5 +12,6 @@ router.get('/:id', controller.show);
 router.get('/deep/:id', controller.deep);
 router.put('/:id', controller.update);
 router.delete('/:id', controller.destroy);
+router.get('/customer/:id', controller.customer);
 
 module.exports = router;

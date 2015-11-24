@@ -8,7 +8,7 @@ angular.module('App.checkout',[
   .config(function ($stateProvider) {
     $stateProvider
       .state('checkout', {
-        url: '/checkout/{bookingId}',
+        url: '/checkout/{bookingId}/{method}',
         templateUrl: 'app/checkout/checkout.html',
         controller: 'CheckoutCtrl',
         controllerAs: 'vm'

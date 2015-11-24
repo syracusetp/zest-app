@@ -6,7 +6,7 @@ angular.module('zestApp')
       title: 'Profile',
       sref: 'profile'
     },{
-      title: 'Bookings',
+      title: 'Bookings (Coming Soon)',
       sref: 'bookings'
     },{
       title: 'Referrals',
