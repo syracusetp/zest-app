@@ -1,0 +1,18 @@
+img.zestart{
+  width: 120px;
+  border: 1px solid gray;
+}
+
+.didnt-work-reason{
+  border:0px solid gray;
+  opacity: 0.5;
+}
+
+.didnt-work-reason img{
+  width:90px;
+}
+
+.didnt-work-reason.selected{
+  opacity:1;
+  color: red ;
+}

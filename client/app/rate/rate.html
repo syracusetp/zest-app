@@ -6,13 +6,44 @@
     <div ng-if="!vm.loading">
       <h3>Thank You!</h3>
         <p>Your rating has been saved.</p>
+        <img class="zestart" src="{{vm.imgSrc}}" />
         <h3><uib-rating ng-model="vm.rating.rating" max="5" readonly="vm.done"></uib-rating></h3>
-        <textarea class="form-control"
-                  ng-if="!vm.done"
-                  ng-disabled="vm.commenting"
-                  ng-model="vm.rating.comments"
-                  placeholder="How can we improve? What did you like the most? Any suggestion helps!"></textarea>
-        <br>
+        <span ng-if="!vm.done">
+          <h4>What didn't work?</h4>
+          <div layout="row">
+            <div flex="50"
+                 ng-click="vm.rating.arrival = !vm.rating.arrival"
+                 class="didnt-work-reason {{vm.rating.arrival===true ? 'selected':''}}">
+              Arrival&nbsp;Time<br>
+              <img src="/assets/images/noun_16231_cc.png" />
+            </div>
+            <div flex="50"
+                 ng-click="vm.rating.professionalism = !vm.rating.professionalism"
+                 class="didnt-work-reason {{vm.rating.professionalism===true ? 'selected':''}}">
+              Professionalism<br>
+              <img src="/assets/images/noun_148884_cc.png" />
+            </div>
+          </div>
+          <div layout="row">
+            <div flex="50"
+                 ng-click="vm.rating.quality = !vm.rating.quality"
+                 class="didnt-work-reason {{vm.rating.quality===true ? 'selected':''}}">
+              Cleaning&nbsp;Quality<br>
+              <img src="/assets/images/noun_92352_cc.png" />
+            </div>
+            <div flex="50"
+                 ng-click="vm.rating.other = !vm.rating.other"
+                 class="didnt-work-reason {{vm.rating.other===true ? 'selected':''}}">
+              Other<br>
+              <img src="/assets/images/noun_57018_cc.png" />
+            </div>
+          </div>
+          <textarea class="form-control"
+                    ng-disabled="vm.commenting"
+                    ng-model="vm.rating.comments"
+                    placeholder="How can we improve? What did you like the most? Any suggestion helps!"></textarea>
+          <br>
+        </span>
         <h3 ng-if="vm.done"><span class="text-success glyphicon glyphicon-ok"></span></h3>
         <!-- TODO: add social media here -->
         <div class="form-group">

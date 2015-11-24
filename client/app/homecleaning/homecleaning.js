@@ -45,7 +45,7 @@ angular.module('App.homecleaning',[
     vm.hours = function(){
       var hrs = 2;
       if(vm.service && vm.service.bedrooms && vm.service.bathrooms){
-        hrs += (parseInt(vm.service.bedrooms)-1)*1 + (parseInt(vm.service.bathrooms)-1)*1;
+        hrs += (parseInt(vm.service.bedrooms)-1)*0.5 + (parseInt(vm.service.bathrooms)-1)*0.5;
       }
       return hrs;
     };

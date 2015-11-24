@@ -16,7 +16,11 @@ angular.module('App.rate',['ui.router', 'App.services.api.rating'])
       BookingId: $stateParams.bookingId,
       CustomerId: $stateParams.customerId,
       EmployeeId: $stateParams.employeeId,
-      rating: $stateParams.rating
+      rating: $stateParams.rating,
+      arrival: false,
+      professionalism: false,
+      quality: false,
+      other: false
     });
 
     vm.loading = true;
@@ -33,6 +37,8 @@ angular.module('App.rate',['ui.router', 'App.services.api.rating'])
           .ok('Ok')
       );
     });
+
+    vm.imgSrc = '/assets/images/zestar/'+$stateParams.employeeId+'.png';
 
     vm.comment = function(){
       vm.commenting = true;
