@@ -39,7 +39,9 @@ angular.module('App.homecleaning',[
     };
 
     vm.total = function(){
-      return (vm.hours()* (vm.frequency ? parseFloat(vm.frequency.rate) : 0) + (vm.zone ? parseFloat(vm.zone.rate) : 0) + vm.extras());
+      var tot = (vm.hours()* (vm.frequency ? parseFloat(vm.frequency.rate) : 0) + (vm.zone ? parseFloat(vm.zone.rate) : 0) + vm.extras());
+      tot = tot*(vm.frequency? vm.frequency.multiplier : 1);
+      return tot;
     };
 
     vm.hours = function(){

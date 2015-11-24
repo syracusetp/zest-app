@@ -91,3 +91,27 @@ md-radio-button.md-checked .md-off{
 form.form{
   padding:10px;
 }
+
+table.price{
+  width:100%;
+}
+
+table.price tr td{
+  text-align: right;
+}
+
+table.price tr td:first-child{
+  text-align: left;
+}
+
+md-toolbar.price-breakdown{
+  height:100px !important;
+  background:gray !important;
+}
+
+.md-toolbar-tools > div {
+  width:100% !important;
+  text-align: center !important;
+  margin-top: 50px !important;
+  font-size:13px !important;
+}

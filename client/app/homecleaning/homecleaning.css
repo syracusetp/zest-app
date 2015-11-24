@@ -30,27 +30,3 @@
   text-align: left;
   padding-left:10px;
 }
-
-table.price{
-  width:100%;
-}
-
-table.price tr td{
-  text-align: right;
-}
-
-table.price tr td:first-child{
-  text-align: left;
-}
-
-md-toolbar.homecleaning{
-  height:100px !important;
-  background:gray !important;
-}
-
-.md-toolbar-tools > div {
-  width:100% !important;
-  text-align: center !important;
-  margin-top: 50px !important;
-  font-size:13px !important;
-}

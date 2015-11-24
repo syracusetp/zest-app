@@ -27,12 +27,12 @@
                 ng-if="!vm.working">Checkout</button>
       </div>
     </md-content>
-    <md-toolbar style="height:100px;background:gray">
+    <md-toolbar class="price-breakdown">
       <div class="md-toolbar-tools">
-        <div layout="column" layout-align="center center"  style="width:100%;text-align: center;margin-top: 50px;font-size:13px">
+        <div layout="column" layout-align="center center">
           <table class="price">
             <tr>
-              <td>{{vm.booking.hours}} hour {{vm.booking.ServiceType.description}}</td>
+              <td>{{vm.booking.hours}} hour {{vm.booking.ServiceType.description}} x {{vm.booking.Frequency.multiplier}}</td>
               <td>₦{{vm.booking.total.toFixed(1)}}</td>
             </tr>
             <tr>
@@ -40,7 +40,7 @@
               <td></td>
             </tr>
             <tr>
-              <td><b>Total</b></td>
+              <td><b><span ng-if="vm.frequency.multiplier !== 1">Monthly</span> Total</b></td>
               <td><b>₦{{vm.booking.total.toFixed(1)}}</b></td>
             </tr>
           </table>
