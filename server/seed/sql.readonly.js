@@ -74,6 +74,7 @@ module.exports = function(db) {
         active: true,
         name: 'once',
         description: 'One-off',
+        multiplier: 1,
         rate: 1800
     });
     db.Frequency.create({
@@ -81,6 +82,7 @@ module.exports = function(db) {
         active: false,
         name: 'daily',
         description: 'Daily',
+        multiplier: 30,
         rate: 1313
     });
     db.Frequency.create({
@@ -89,17 +91,27 @@ module.exports = function(db) {
         default: true,
         name: 'weekly',
         description: 'Weekly (4 times a month)',
+        multiplier: 4,
         rate: 1313
     });
     db.Frequency.create({
         rank: 4,
         active: true,
-        name: 'bi-weekly',
-        description: 'Twice a month',
-        rate: 1400
+        name: 'weekly',
+        description: 'Twice a week (8 times a month)',
+        multiplier: 8,
+        rate: 1225
     });
     db.Frequency.create({
         rank: 5,
+        active: true,
+        name: 'bi-weekly',
+        description: 'Twice a month',
+        multiplier: 2,
+        rate: 1400
+    });
+    db.Frequency.create({
+        rank: 6,
         active: true,
         name: 'monthly',
         description: 'Once a month',
@@ -164,17 +176,17 @@ module.exports = function(db) {
     db.Zone.create({
       category: 'Island 1',
       neighborhood: 'Lekki',
-      rate: 860
+      rate: 0
     });
     db.Zone.create({
       category: 'Island 1',
       neighborhood: 'Ajah',
-      rate: 860
+      rate: 0
     });
     db.Zone.create({
       category: 'Island 1',
       neighborhood: 'Victoria Garden City',
-      rate: 860
+      rate: 0
     });
     db.Zone.create({
       category: 'Mainland 1',

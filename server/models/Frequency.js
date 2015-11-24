@@ -15,6 +15,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       defaultValue: true
     },
+    multiplier: DataTypes.BIGINT,
     notes: DataTypes.TEXT
   }, {
     paranoid: true,
