@@ -97,7 +97,7 @@ module.exports = function(db) {
     db.Frequency.create({
         rank: 4,
         active: true,
-        name: 'weekly',
+        name: 'twice-weekly',
         description: 'Twice a week (8 times a month)',
         multiplier: 8,
         rate: 1225

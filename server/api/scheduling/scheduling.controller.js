@@ -366,7 +366,7 @@ exports.complete = function(req, res) {
                 }).then(function(scheduledBooking) {
                     res.json(200, scheduledBooking);
                 });
-            } else if (frequencyName === 'weekly') {
+            } else if (frequencyName === 'weekly' || frequencyName === 'twice-weekly') {
                 db.ScheduledWeeklyBooking.create({
                     EmployeeId: EmployeeId,
                     BookingId: BookingId,
