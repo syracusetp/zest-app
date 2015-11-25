@@ -22,7 +22,8 @@ angular.module('zestApp', [
   'App.homecleaning',
   'App.schedule',
   'App.pay',
-  'App.checkout'
+  'App.checkout',
+  'App.bookings'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

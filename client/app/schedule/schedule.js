@@ -122,7 +122,7 @@ angular.module('App.schedule',[
 
     function fitFooter(){
       vm.inner = $window.innerHeight;
-      $('#homecleaning-form-container').height(vm.inner-55);
+      $('#schedule-form-container').height(vm.inner-55);
     }
 
   });

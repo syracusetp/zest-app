@@ -1,0 +1,33 @@
+<form name="form" novalidate>
+  <div layout="column" layout-align="center center" id="checkout-form-container">
+    <h4 class="header">Bookings</h4>
+    <md-content flex class="standard-form" ng-if="vm.loading">
+      <span class="fa fa-spinner fa-spin"></span>
+    </md-content>
+    <md-content flex class="standard-form" ng-if="!vm.loading">
+
+      <section style="text-align: left">
+        <md-subheader class="md-primary">Scheduled Bookings</md-subheader>
+        <md-list layout-padding>
+          <md-list-item class="md-3-line" ng-repeat="booking in vm.bookings">
+            <img ng-src="{{booking.ServiceType.iconSrc}}" class="md-avatar">
+            <div class="md-list-item-text">
+              <h3>{{booking.ServiceType.description}}</h3>
+              <h4>{{booking.Frequency.description}}</h4>
+              <p>
+                {{booking.address}}
+              </p>
+            </div>
+            <span class="fa fa-check"></span>
+          </md-list-item>
+        </md-list>
+      </section>
+
+      <div class="form-group">
+        <button class="btn btn-success submit"
+                ui-sref="main">New Booking</button>
+      </div>
+    </md-content>
+  </div>
+</form>
+

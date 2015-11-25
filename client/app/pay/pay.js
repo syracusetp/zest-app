@@ -66,6 +66,7 @@ angular.module('App.pay',[
 
       vm.checkout.$save(function(checkout){
         vm.booking.CheckoutId = checkout.id;
+        vm.booking.active = true;
         vm.booking.$update({id: vm.booking.id},function(){
           $state.go('checkout',{bookingId: vm.booking.id, method: vm.method});
           vm.working = false;
@@ -90,7 +91,7 @@ angular.module('App.pay',[
 
     function fitFooter(){
       vm.inner = $window.innerHeight;
-      $('#homecleaning-form-container').height(vm.inner-55);
+      $('#pay-form-container').height(vm.inner-55);
     }
 
   });

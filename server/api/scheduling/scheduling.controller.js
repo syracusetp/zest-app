@@ -342,7 +342,8 @@ exports.complete = function(req, res) {
       })
       .then(function(cleaning) {
         cleaning.updateAttributes({
-            FrequencyId: FrequencyId
+            FrequencyId: FrequencyId,
+            scheduled: true
         }).then(function(cleaning) {
 
             if (frequencyName === 'once') {

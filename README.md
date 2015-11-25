@@ -1,4 +1,4 @@
-## Fix: imagemin:
+## Fix: imagemin
 * https://github.com/DaftMonk/generator-angular-fullstack/issues/123
 * https://github.com/gruntjs/grunt-contrib-imagemin/issues/214
 ```sh
@@ -60,3 +60,4 @@ $ npm install mysql --save
 2. Edit customer info
 3. View employee schedule
 4. Send ratings request
+5. View ratings

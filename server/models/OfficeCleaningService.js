@@ -1,5 +1,9 @@
  module.exports = function(sequelize, DataTypes) {
      var OfficeCleaningService = sequelize.define("OfficeCleaningService", {
+         scheduled: {
+           type: DataTypes.BOOLEAN,
+           defaultValue: false
+         },
          rooms: {
              type: DataTypes.DECIMAL(10, 2),
              validate: {
