@@ -40,15 +40,15 @@
           <table class="price">
             <tr>
               <td>{{vm.booking.hours}} hour {{vm.booking.ServiceType.description}} x {{vm.booking.Frequency.multiplier}}</td>
-              <td>₦{{vm.booking.total.toFixed(1)}}</td>
+              <td>₦{{(1*vm.booking.total).toFixed(1)}}</td>
             </tr>
             <tr>
               <td></td>
               <td></td>
             </tr>
             <tr>
-              <td><b><span ng-if="vm.frequency.multiplier !== 1">Monthly</span> Total</b></td>
-              <td><b>₦{{vm.booking.total.toFixed(1)}}</b></td>
+              <td><b><span ng-if="vm.frequency.name !== 'once'">Monthly</span> Total</b></td>
+              <td><b>₦{{(1*vm.booking.total).toFixed(1)}}</b></td>
             </tr>
           </table>
           <div></div><br>

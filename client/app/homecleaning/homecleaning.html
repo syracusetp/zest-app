@@ -111,7 +111,7 @@
               <td>₦{{vm.extras().toFixed(1)}}</td>
             </tr>
             <tr>
-              <td><b><span ng-if="vm.frequency.multiplier !== 1">Monthly</span> Total</b></td>
+              <td><b><span ng-if="vm.frequency.name !== 'once'">Monthly</span> Total</b></td>
               <td><b>₦{{vm.total().toFixed(1)}}</b></td>
             </tr>
           </table>

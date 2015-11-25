@@ -78,15 +78,23 @@ module.exports = function(db) {
         rate: 1800
     });
     db.Frequency.create({
-        rank: 2,
-        active: false,
-        name: 'daily',
-        description: 'Daily',
-        multiplier: 30,
-        rate: 1313
+      rank: 2,
+      active: true,
+      name: 'monthly',
+      multiplier: 1,
+      description: 'Once a month',
+      rate: 1800
     });
     db.Frequency.create({
-        rank: 3,
+      rank: 3,
+      active: true,
+      name: 'bi-weekly',
+      description: 'Twice a month',
+      multiplier: 2,
+      rate: 1400
+    });
+    db.Frequency.create({
+        rank: 4,
         active: true,
         default: true,
         name: 'weekly',
@@ -95,7 +103,7 @@ module.exports = function(db) {
         rate: 1313
     });
     db.Frequency.create({
-        rank: 4,
+        rank: 5,
         active: true,
         name: 'twice-weekly',
         description: 'Twice a week (8 times a month)',
@@ -103,19 +111,12 @@ module.exports = function(db) {
         rate: 1225
     });
     db.Frequency.create({
-        rank: 5,
-        active: true,
-        name: 'bi-weekly',
-        description: 'Twice a month',
-        multiplier: 2,
-        rate: 1400
-    });
-    db.Frequency.create({
-        rank: 6,
-        active: true,
-        name: 'monthly',
-        description: 'Once a month',
-        rate: 1800
+      rank: 6,
+      active: false,
+      name: 'daily',
+      description: 'Daily',
+      multiplier: 30,
+      rate: 1313
     });
 
     // --------------  Extras
