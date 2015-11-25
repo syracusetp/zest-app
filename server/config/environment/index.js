@@ -25,10 +25,10 @@ var all = {
   ip: process.env.IP || '0.0.0.0',
 
   // Should we populate the DB with sample data?
-  seedDB: true,
+  seedDB: false,
 
   // Shouuld sequelize drop and create
-  force: true,
+  force: false,
 
   // Secret for session, you will want to change this and make it an environment variable
   secrets: {
@@ -37,6 +37,9 @@ var all = {
 
   // List of user roles
   userRoles: ['guest', 'user', 'admin'],
+
+  // API kets
+  SENDGRID_API_KEY: process.env.PORT.SENDGRID_API_KEY || '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',
 
   // MongoDB connection options
   mongo: {

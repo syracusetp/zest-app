@@ -3,7 +3,9 @@
 var db = require('../../models'),
     _ = require('lodash'),
     Q = require('q'),
-    moment = require('moment');
+    moment = require('moment'),
+    config = require('../../config/environment'),
+    sendgrid = require('sendgrid')(config.SENDGRID_API_KEY);
 
 /**
  * Given the {YEAR} {MONTH} and {HOURS} this endpoint returns all openings in {MONTH} for bookings of {HOURS} long.
@@ -347,6 +349,18 @@ exports.complete = function(req, res) {
             FrequencyId: FrequencyId,
             scheduled: true
         }).then(function(cleaning) {
+
+            // NOTE: do better
+            sendgrid.send({
+              to:       ['technology@generationenterprise.org','sales@zest.com.ng'],
+              from:     'sales@zest.com.ng',
+              subject:  'ZEST-APP: Booking Scheduled BOOKING_ID:'+BookingId,
+              html:     'Booking: http://zest-app.herokuapp.com/api/bookings/'+BookingId+'<br>'+
+                        'Customer: http://zest-app.herokuapp.com/api/customers/'+CustomerId+'<br>'+
+                        'Cleaning: http://zest-app.herokuapp.com/api/homecleanings/'+cleaning.id
+            }, function(err, json) {
+                console.error('SENDGRID_ERROR: ',err);
+            });
 
             if (frequencyName === 'once') {
                 db.ScheduledOnceBooking.create({

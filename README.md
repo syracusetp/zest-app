@@ -30,7 +30,7 @@ $ npm install mysql --save
 3. Pay: Transfer (done)
 4. Checkout (done)
 5. Profile: View, Edit (done)
-6. Bookings: View, Edit
+6. Bookings: View, Delete (done)
 
 7. Pay: Online
 
@@ -38,13 +38,13 @@ $ npm install mysql --save
 9. Schedule
 10. Pay
 11. Checkout
-12. Bookings: View, Edit
+12. Bookings: View, Delete
 
 13. Book: Fumigation
 14. Schedule
 15. Pay
 16. Checkout
-17. Bookings: View, Edit
+17. Bookings: View, Delete
 
 18. Book: Air Conditioner
 19. Schedule
@@ -68,3 +68,6 @@ $ npm install mysql --save
 1. https://docs.angularjs.org/api/ngResource/service/$resource
   * You can also access the raw $http promise via the $promise property on the object returned
 2. Fold 'XXXApiService' into respective factories
+
+# AIK
+ZAH:::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

@@ -10,7 +10,7 @@ exports.index = function(req, res) {
     });
 };
 
-exports.show = function(req, res) {
+exports.deep = function(req, res) {
     db.HomeCleaningService.findOne({
         where: {
             id: req.params.id
@@ -22,6 +22,19 @@ exports.show = function(req, res) {
     }).then(function(service) {
         return res.json(200, service);
     });
+};
+
+exports.show = function(req, res) {
+  db.HomeCleaningService.findOne({
+    where: {
+      id: req.params.id
+    },
+    include: [{
+      model: db.HomeCleaningExtra
+    }]
+  }).then(function(service) {
+    return res.json(200, service);
+  });
 };
 
 exports.create = function(req, res) {
