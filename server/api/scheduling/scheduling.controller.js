@@ -44,11 +44,7 @@ var findAllOpenings = function(YEAR, MONTH, HOURS) {
 
     // Returns an hourly schedule array
     var createHourlySchedule = function(day) {
-        if(day === 0){
-            return [1150, 1200, 1250, 1300, 1350, 1400, 1450, 1500, 1550, 1600, 1650, 1700, 1750, 1800, 1850, 1900, 1950, 2000, 2050];
-        }else{
-            return [650, 700,750, 800, 850, 900, 950, 1000, 1050, 1100, 1150, 1200, 1250, 1300, 1350, 1400, 1450, 1500, 1550, 1600, 1650, 1700, 1750, 1800, 1850, 1900, 1950, 2000, 2050];
-        }
+        return [650, 700,750, 800, 850, 900, 950, 1000, 1050, 1100, 1150, 1200, 1250, 1300, 1350, 1400, 1450, 1500, 1550, 1600, 1650, 1700, 1750, 1800, 1850, 1900, 1950, 2000, 2050];
     };
 
     // Returns a set of daily hourly schedules from 'start' to 'end'
@@ -56,14 +52,11 @@ var findAllOpenings = function(YEAR, MONTH, HOURS) {
         var openings = {};
         var runner = moment(start);
         for (; runner < end; runner.add(1, 'days')) {
-            // Ignore Saturdays
-            if (runner.day() !== 6) {
-                var d = runner.format("YYYY-MM-DD");
-                openings[d] = createHourlySchedule(runner.day());
-            }
+          var d = runner.format("YYYY-MM-DD");
+          openings[d] = createHourlySchedule(runner.day());
         }
         return openings;
-    }
+    };
 
     // Run day by day to a target day
     var runToDay = function(moment, day) {
