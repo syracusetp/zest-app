@@ -35,6 +35,26 @@ exports.customer = function(req, res) {
       model: db.ServiceType
     },{
       model: db.Frequency
+    },{
+      model: db.ScheduledOnceBooking
+    },{
+      model: db.ScheduledDailyBooking
+    },{
+      model: db.ScheduledBiWeeklyBooking
+    },{
+      model: db.ScheduledWeeklyBooking
+    },{
+      model: db.ScheduledMonthlyBooking
+    },{
+      model: db.AirConditionerService
+    },{
+      model: db.FumigationService
+    },{
+      model: db.HomeCleaningService
+    },{
+      model: db.OfficeCleaningService
+    },{
+      model: db.PostConstructionCleaningService
     }]
   }).then(function(booking) {
     return res.json(200, booking);
@@ -74,11 +94,60 @@ exports.update = function(req, res) {
 };
 
 exports.destroy = function(req, res) {
-    db.Booking.findById(req.body.id).then(function(booking) {
-        booking.destroy(req.body).then(function(booking) {
-            return res.json(200, booking);
-        }).error(function(error) {
-            return res.json(500, error);
-        })
+  db.Booking.findOne({
+    where: {
+      id: req.params.id
+    },
+    include: [{
+      model: db.ScheduledOnceBooking
+    },{
+      model: db.ScheduledDailyBooking
+    },{
+      model: db.ScheduledBiWeeklyBooking
+    },{
+      model: db.ScheduledWeeklyBooking
+    },{
+      model: db.ScheduledMonthlyBooking
+    },{
+      model: db.AirConditionerService
+    },{
+      model: db.FumigationService
+    },{
+      model: db.HomeCleaningService,
+      include: [db.HomeCleaningExtra]
+    },{
+      model: db.OfficeCleaningService
+    },{
+      model: db.PostConstructionCleaningService
+    }]
+  }).then(function(booking) {
+
+    var deletes = [];
+
+    if(booking.ScheduledOnceBooking) deletes.push(booking.ScheduledOnceBooking.destroy());
+    if(booking.ScheduledDailyBooking) deletes.push(booking.ScheduledDailyBooking.destroy());
+    if(booking.ScheduledBiWeeklyBooking) deletes.push(booking.ScheduledBiWeeklyBooking.destroy());
+    if(booking.ScheduledWeeklyBooking) deletes.push(booking.ScheduledWeeklyBooking.destroy());
+    if(booking.ScheduledMonthlyBooking) deletes.push(booking.ScheduledMonthlyBooking.destroy());
+    if(booking.AirConditionerService) deletes.push(booking.AirConditionerService.destroy());
+    if(booking.FumigationService) deletes.push(booking.FumigationService.destroy());
+    if(booking.HomeCleaningService){
+      _.each(booking.HomeCleaningService.HomeCleaningExtras, function(HomeCleaningExtra){
+        deletes.push(HomeCleaningExtra.HomeCleaningServiceExtra.destroy());
+      });
+      booking.HomeCleaningService.setHomeCleaningExtras([]);
+      deletes.push(booking.HomeCleaningService.destroy());
+    }
+    if(booking.OfficeCleaningService) deletes.push(booking.OfficeCleaningService.destroy());
+    if(booking.PostConstructionCleaningService) deletes.push(booking.PostConstructionCleaningService.destroy());
+
+    Q.all(deletes).then(function(){
+      booking.destroy(req.body).then(function() {
+        return res.json(200, booking);
+      });
     });
+
+  }).error(function(error) {
+    return res.json(500, error);
+  });
 };

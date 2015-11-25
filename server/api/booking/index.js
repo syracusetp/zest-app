@@ -9,9 +9,10 @@ var router = express.Router();
 router.get('/', controller.index);
 router.post('/', controller.create);
 router.get('/:id', controller.show);
-router.get('/deep/:id', controller.deep);
+router.get('/:id/deep', controller.deep);
 router.put('/:id', controller.update);
 router.delete('/:id', controller.destroy);
 router.get('/customer/:id', controller.customer);
+router.get('/:id/destroy', controller.destroy);
 
 module.exports = router;

@@ -102,10 +102,10 @@
               <td>{{vm.hours()}} hour cleaning (₦{{vm.frequency.rate}}/hour) x{{vm.frequency.multiplier}}</td>
               <td>₦{{(vm.hours()*vm.frequency.rate).toFixed(1)}}</td>
             </tr>
-            <tr ng-if="vm.zone.rate">
+            <!--tr ng-if="vm.zone.rate">
               <td>+ {{vm.zone.neighborhood}} transportation</td>
               <td>₦{{(1*vm.zone.rate).toFixed(1)}}</td>
-            </tr>
+            </tr-->
             <tr ng-if="vm.extras()">
               <td>+ Extras</td>
               <td>₦{{vm.extras().toFixed(1)}}</td>

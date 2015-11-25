@@ -1,5 +1,33 @@
-.payment .md-label{
-  width: 150px;
-  text-align: left;
+.bookings .standard-form{
+  min-width: 310px;
+}
+
+.bookings .md-subheader .md-subheader-inner{
+  padding:5px;
   padding-left:10px;
+  color:white;
+  background:gray;
+}
+
+.bookings section{
+  text-align: left;
+}
+
+.bookings .md-avatar{
+  border-radius:0px;
+  margin-right: 10px;
+  margin-left: 0px;
+  margin-top:20px;
+}
+
+.bookings .md-list-item-text p{
+  font-size: 12px !important;
+}
+
+.bookings .md-list-item-text.none{
+  text-align: center;
+}
+
+.bookings .form-group{
+  padding-right:15px;
 }

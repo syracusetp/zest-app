@@ -12,14 +12,24 @@ exports.show = function(req, res) {
     db.Customer.findOne({
       where: {
         id: req.params.id
-      },
-      include: [{
-        all: true,
-        nested: true
-      }]
+      }
     }).then(function(booking) {
         return res.json(200, booking);
     });
+};
+
+exports.deep = function(req, res) {
+  db.Customer.findOne({
+    where: {
+      id: req.params.id
+    },
+    include: [{
+      all: true,
+      nested: true
+    }]
+  }).then(function(booking) {
+    return res.json(200, booking);
+  });
 };
 
 exports.create = function(req, res) {

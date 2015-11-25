@@ -9,6 +9,22 @@ exports.index = function(req, res) {
 };
 
 exports.show = function(req, res) {
+  db.ServiceRating.findOne({
+    where: {
+      id: req.params.id
+    },
+    include: [{
+      model: db.Booking,
+      include:[db.ServiceType]
+    },{
+      model: db.Employee
+    }]
+  }).then(function(rating) {
+    return res.json(200, rating);
+  });
+};
+
+exports.deep = function(req, res) {
     db.ServiceRating.findOne({
       where: {
         id: req.params.id

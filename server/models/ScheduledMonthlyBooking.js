@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
         day: {
             type: DataTypes.INTEGER,
             validate: {
-                min: 1,
+                min: 0,
                 max: 6
             }
         },
@@ -48,5 +48,5 @@ module.exports = function(sequelize, DataTypes) {
         }
     });
 
-    return ScheduledMonthlyBooking; 
+    return ScheduledMonthlyBooking;
 };

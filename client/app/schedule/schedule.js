@@ -2,6 +2,7 @@
 
 angular.module('App.schedule',[
   'ui.router',
+  'App.services.utils',
   'App.services.api.booking',
   'App.services.api.scheduling'
 ])
@@ -15,7 +16,7 @@ angular.module('App.schedule',[
       });
   })
   .controller('ScheduleCtrl', function ($q, Auth, AuxApiService, _, $window, $stateParams, Booking, $mdDialog,
-                                        SchedulingApiService, moment, $state) {
+                                        SchedulingApiService, moment, $state, Utils) {
     var vm = this;
 
     vm.loading = true;
@@ -36,7 +37,7 @@ angular.module('App.schedule',[
     vm.update = function(){
       vm.times = _.map(_.keys(vm.openings[vm.date]), function(time){
         return {
-          val: (''+(parseInt(time)+50)).replace(/50$/,'30'),
+          val: Utils.ctime(time),
           key: time
         };
       });

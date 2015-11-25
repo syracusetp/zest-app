@@ -9,7 +9,7 @@ angular.module('App.homecleaning',[
   .config(function ($stateProvider) {
     $stateProvider
       .state('homecleaning', {
-        url: '/homecleaning/{homeCleaningId}',
+        url: '/homecleaning/{serviceId}',
         templateUrl: 'app/homecleaning/homecleaning.html',
         controller: 'HomeCleaningCtrl',
         controllerAs: 'vm'
@@ -168,9 +168,9 @@ angular.module('App.homecleaning',[
     }
 
     function init(){
-      if($stateParams.homeCleaningId){
+      if($stateParams.serviceId){
         vm.loading = true;
-        HomeCleaning.get({id: $stateParams.homeCleaningId}, function(service){
+        HomeCleaning.get({id: $stateParams.serviceId}, function(service){
           vm.service = service;
           fetchDetails(vm.service.BookingId);
         }, function(resp){

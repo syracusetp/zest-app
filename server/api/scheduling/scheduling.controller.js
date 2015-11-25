@@ -173,12 +173,12 @@ var findAllOpenings = function(YEAR, MONTH, HOURS) {
                     etime = booking.etime,
                     hours = booking.hours;
 
-                // Run to the target week with the month
+                // Run to the target week within the month
                 // Note: last week in the month may be 4th or 5th
                 do {
                     runToDay(runner, day);
                     week--;
-                } while (week && (runner.month() === start.month()))
+                } while ((week > 0) && (runner.month() === start.month()))
 
                 var date = runner.format("YYYY-MM-DD");
                 var schedule = employee.openings[date];
@@ -229,6 +229,7 @@ var findAllOpenings = function(YEAR, MONTH, HOURS) {
 
     // Remove openings that cannot accomodate the HOURS needed
     var removeInvalidOpenings = function(employee) {
+
         _.each(_.keys(employee.openings), function(date) {
             var schedule = employee.openings[date];
             var valids = [];
@@ -243,6 +244,7 @@ var findAllOpenings = function(YEAR, MONTH, HOURS) {
             id: employee.id,
             openings: employee.openings
         };
+
     };
 
     if (!cancel) {

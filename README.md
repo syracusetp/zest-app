@@ -54,6 +54,8 @@ $ npm install mysql --save
 
 23. Rate email
 24. Resume from unbooked service
+25. Implement twice-weekly booking algo, change bi-weekly to twice-monthly
+26. Add social outlets from Rate complete
 
 ## To Do - Manager
 1. View customer info
@@ -61,3 +63,8 @@ $ npm install mysql --save
 3. View employee schedule
 4. Send ratings request
 5. View ratings
+
+## Refactor
+1. https://docs.angularjs.org/api/ngResource/service/$resource
+  * You can also access the raw $http promise via the $promise property on the object returned
+2. Fold 'XXXApiService' into respective factories
