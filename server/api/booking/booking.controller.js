@@ -121,26 +121,21 @@ exports.destroy = function(req, res) {
     }]
   }).then(function(booking) {
 
-    var deletes = [];
-
-    if(booking.ScheduledOnceBooking) deletes.push(booking.ScheduledOnceBooking.destroy());
-    if(booking.ScheduledDailyBooking) deletes.push(booking.ScheduledDailyBooking.destroy());
-    if(booking.ScheduledBiWeeklyBooking) deletes.push(booking.ScheduledBiWeeklyBooking.destroy());
-    if(booking.ScheduledWeeklyBooking) deletes.push(booking.ScheduledWeeklyBooking.destroy());
-    if(booking.ScheduledMonthlyBooking) deletes.push(booking.ScheduledMonthlyBooking.destroy());
-    if(booking.AirConditionerService) deletes.push(booking.AirConditionerService.destroy());
-    if(booking.FumigationService) deletes.push(booking.FumigationService.destroy());
+    if(booking.ScheduledOnceBooking) booking.ScheduledOnceBooking.destroy();
+    if(booking.ScheduledDailyBooking) booking.ScheduledDailyBooking.destroy();
+    if(booking.ScheduledBiWeeklyBooking) booking.ScheduledBiWeeklyBooking.destroy();
+    if(booking.ScheduledWeeklyBooking) booking.ScheduledWeeklyBooking.destroy();
+    if(booking.ScheduledMonthlyBooking) booking.ScheduledMonthlyBooking.destroy();
+    if(booking.AirConditionerService) booking.AirConditionerService.destroy();
+    if(booking.FumigationService) booking.FumigationService.destroy();
     if(booking.HomeCleaningService){
-      _.each(booking.HomeCleaningService.HomeCleaningExtras, function(HomeCleaningExtra){
-        deletes.push(HomeCleaningExtra.HomeCleaningServiceExtra.destroy());
-      });
-      booking.HomeCleaningService.setHomeCleaningExtras([]);
-      deletes.push(booking.HomeCleaningService.destroy());
+      // TODO: make sure extras deleted
+      booking.HomeCleaningService.destroy();
     }
-    if(booking.OfficeCleaningService) deletes.push(booking.OfficeCleaningService.destroy());
-    if(booking.PostConstructionCleaningService) deletes.push(booking.PostConstructionCleaningService.destroy());
+    if(booking.OfficeCleaningService) booking.OfficeCleaningService.destroy();
+    if(booking.PostConstructionCleaningService) booking.PostConstructionCleaningService.destroy();
 
-    booking.destroy(req.body).then(function() {
+    booking.destroy().then(function() {
       return res.json(200, booking);
     });
 
@@ -188,9 +183,7 @@ exports.destroyAll = function(req, res) {
     if(booking.AirConditionerService) deletes.push(booking.AirConditionerService.destroy());
     if(booking.FumigationService) deletes.push(booking.FumigationService.destroy());
     if(booking.HomeCleaningService){
-      _.each(booking.HomeCleaningService.HomeCleaningExtras, function(HomeCleaningExtra){
-        deletes.push(HomeCleaningExtra.HomeCleaningServiceExtra.destroy());
-      });
+      // TODO: make sure extras deleted
       booking.HomeCleaningService.setHomeCleaningExtras([]);
       deletes.push(booking.HomeCleaningService.destroy());
     }

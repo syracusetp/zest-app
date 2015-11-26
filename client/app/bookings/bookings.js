@@ -53,6 +53,15 @@ angular.module('App.bookings',[
       vm.loading = true;
       Booking.delete({id: booking.id}).$promise.then(function(){
         init();
+      }).catch(function(resp){
+        $mdDialog.show(
+          $mdDialog.alert()
+            .title('Error')
+            .content(resp)
+            .ok('Ok')
+        );
+      }).finally(function(){
+        init();
       });
     };
 
