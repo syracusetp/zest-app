@@ -25,10 +25,10 @@ var all = {
   ip: process.env.IP || '0.0.0.0',
 
   // Should we populate the DB with sample data?
-  seedDB: true,
+  seedDB: false,
 
   // Shouuld sequelize drop and create
-  force: true,
+  force: false,
 
   // Secret for session, you will want to change this and make it an environment variable
   secrets: {

@@ -23,7 +23,8 @@ angular.module('zestApp', [
   'App.schedule',
   'App.pay',
   'App.checkout',
-  'App.bookings'
+  'App.bookings',
+  'App.bookoffline'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

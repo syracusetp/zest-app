@@ -19,6 +19,9 @@ angular.module('App.homecleaning',[
                                             $mdDialog, CustomerApiService, BookingApiService, $state, Customer) {
     var vm = this;
 
+    $state.go('bookoffline');
+    return;
+
     init();
 
     vm.update = function(){

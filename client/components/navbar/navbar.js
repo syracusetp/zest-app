@@ -5,10 +5,10 @@ angular.module('zestApp')
     $scope.menu = [{
       title: 'Profile',
       sref: 'profile'
-    },{
+    },/*{
       title: 'Bookings',
       sref: 'bookings'
-    },{
+    },*/{
       title: 'Referrals',
       sref: 'referrals'
     },{

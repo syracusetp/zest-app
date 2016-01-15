@@ -5,6 +5,11 @@
 $ npm cache clean && npm install gruntjs/grunt-contrib-imagemin
 ```
 
+## Clone from Heroku
+```sh
+$ heroku git:clone -a myapp
+```
+
 ## MySQL Controls
 /usr/local/bin/mysql.server [start | stop | restart]
 
